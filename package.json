@@ -1,0 +1,28 @@
+{
+  "name": "ecommercestore",
+  "version": "1.0.0",
+  "description": "eCommerceStore is a 3tiered e-commerce store application ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cmrenus/eCommerceStore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cmrenus/eCommerceStore/issues"
+  },
+  "homepage": "https://github.com/cmrenus/eCommerceStore#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "body-parser": "^1.15.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.14.0",
+    "express-session": "^1.14.1",
+    "mongodb": "^2.2.11",
+    "path": "^0.12.7"
+  }
+}
