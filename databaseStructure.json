@@ -1,0 +1,45 @@
+User: {
+	name: string,
+	password: hash,
+	id: id
+}
+
+purchases: {
+	userID: id,
+	date: date,
+	items: [{
+		sku: int,
+		price: float,
+		quantity: int
+	}]
+}
+
+item: {
+	sku: int,
+	name: string,
+	description: string,
+	price: float,
+	stock: int,
+	category: string,
+	keywords: [],
+	discount: int
+}
+
+ratings: {
+	sku: int,
+	rate: int,
+	comments: string
+}
+
+shoppingCart: {
+	cookie: string,
+	userID: (can be blank),
+	items: [{
+		sku: int,
+		quantity: int
+	}]
+}
+
+discountCodes:{
+	
+}
