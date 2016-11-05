@@ -18,13 +18,15 @@
   "homepage": "https://github.com/cmrenus/eCommerceStore#readme",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-carousel": "^1.0.1",
     "angular-route": "^1.5.8",
+    "angular-touch": "^1.5.8",
     "angular-ui-bootstrap": "^2.2.0",
     "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
-    "express-session": "^1.14.1",
+    "express-session": "^1.14.2",
     "mongodb": "^2.2.11",
     "path": "^0.12.7"
   }

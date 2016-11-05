@@ -1,25 +1,18 @@
-<section>
+<div ng-controller="homeCtrl">
     <!-- *** HOMEPAGE CAROUSEL ***
 _________________________________________________________ -->
-    <div style="height: 100%">
-        <div uib-carousel interval="5000">
-            <div uib-slide>
+    <div >
+        <div uib-carousel id="#myCarousel" active="0" interval="5000">
+            <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" ng-class="{'active': $index == 0}">
                 <!--<div class="carousel-wrapper">-->
-                <img ng-src="resources/images/photogrid.jpg" width="100%" style="margin:auto; background-color: green; opacity: .5"></div>
+                <img ng-src="{{slide.image}}" style="width: 100%; margin:auto; background-color: green; opacity: .5"></div>
                 <div class="carousel-caption">
-                    <h4>Slide 1</h4>
+                    <h4>Slide {{slide.id}}</h4>
                     <p>PARAGRAPHHHHHHHHHHHH</p>
                 </div>
             </div>
-            <div uib-slide>
-                <img ng-src="resources/images/photogrid.jpg" width="100%" style="margin:auto; background-color: green; opacity: .5"></div>
-                <div class="carousel-caption">
-                    <h4>Slide 2</h4>
-                    <p>PARAGRAPHHHHHHHHHHHH</p>
-                </div>
-            </div>
-            <a class="left carousel-control ng-hide" data-target="#myCarousel" role="button" data-slide="prev" ng-non-bindable></a>
-            <a class="right carousel-control ng-hide" data-target="#myCarousel" role="button" data-slide="next" ng-non-bindable></a>
+            <!--<a class="left carousel-control ng-hide" data-target="#myCarousel" role="button" data-slide="prev"></a>
+            <a class="right carousel-control ng-hide" data-target="#myCarousel" role="button" data-slide="next"></a>-->
             <!--
             <ol class="carousel-indicators">
                 <li></li>
@@ -103,4 +96,4 @@ _________________________________________________________ -->
     </div>-->
 
     <!-- *** HOMEPAGE CAROUSEL END *** -->
-</section>
+</div>
