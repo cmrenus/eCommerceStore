@@ -1,23 +1,32 @@
 var express = require('express'),
 	serverPort = 8000,
 	path = require('path'),
-	session = require('express-session'),
+	//session = require('express-session'),
 	cookieParser = require('cookie-parser'),
 	bodyParser = require('body-parser'),
+  passport = require('passport'),
 	//db = require('./server/db'),
 	app = express();
 
+require('./server/models/user');
+require('./server/config/strategy')
+
 var routes = require('./server/routes/index');
+var authentication = require('./server/routes/authentication');
 //middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(passport.initialize());
 
 //static file usage
 app.use('/', express.static(path.join(__dirname, '/')));
 
 
 app.use('/', routes);
+
+app.use('/login', authentication.login);
+app.use('/register', authentication.register);
 /*db.connect(dbURI, function(err) {
   if (err) {
     console.log('Unable to connect to Mongo.')

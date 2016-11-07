@@ -1,5 +1,6 @@
 User: {
 	name: string,
+	email: string,
 	password: hash,
 	id: id
 }
@@ -21,8 +22,12 @@ item: {
 	price: float,
 	stock: int,
 	category: string,
+	subCategory: string,
 	keywords: [],
-	discount: int
+	discount: int,
+	dateAdded: date,
+	mostRecentPurchase: date,
+	images: []
 }
 
 ratings: {

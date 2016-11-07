@@ -6,6 +6,9 @@ app.config(["$routeProvider", function($routeProvider){
 		templateUrl: "client/views/home.html",
 		controller: "homeCtrl"
 	}).
+	when('/login', {
+		templateUrl: "client/views/login.html"
+	}).
 	otherwise({
 		redirectTo: '/'
 	});
