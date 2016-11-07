@@ -13,6 +13,6 @@ passport.use(new LocalStrategy({ usernameField: 'email'}, function(username, pas
 		else if(!user.validatePassword(password)){
 			return done(null, false, {message: "Incorrect credentials"});
 		}
-		reutn done(null, user);
+		return done(null, user);
 	})
 }));

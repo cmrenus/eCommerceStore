@@ -5,8 +5,12 @@ var express = require('express'),
 	cookieParser = require('cookie-parser'),
 	bodyParser = require('body-parser'),
   passport = require('passport'),
+  mongoose = require('mongoose'),
 	//db = require('./server/db'),
 	app = express();
+
+var uri='mongodb://localhost:27017/maskMakers';
+var db = require('mongoose').connect(uri);
 
 require('./server/models/user');
 require('./server/config/strategy')

@@ -7,7 +7,12 @@ app.config(["$routeProvider", function($routeProvider){
 		controller: "homeCtrl"
 	}).
 	when('/login', {
-		templateUrl: "client/views/login.html"
+		templateUrl: "client/views/login.html",
+		controller:"authCtrl"
+	}).
+	when('/register', {
+		templateUrl: "client/views/register.html",
+		controller:"authCtrl"
 	}).
 	otherwise({
 		redirectTo: '/'

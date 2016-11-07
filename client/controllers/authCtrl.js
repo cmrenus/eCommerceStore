@@ -1,10 +1,10 @@
 app = angular.module("ecommerce");
 
-app.controller("authCtrl", ['$scope', 'authentication', '$location' , function($scope, authentication, $location){
-	$scope.user = {name: "", password: ""};
+app.controller("authCtrl", ['$scope', 'Authentication', '$location' , function($scope, Authentication, $location){
+	$scope.user = {name: "",email: "", password: ""};
 
 	$scope.login = function(user){
-		authentication.login(user).then(function(res){
+		Authentication.login(user).then(function(res){
 			//$location.path('/#/');
 			console.log(res);
 		},
@@ -14,7 +14,7 @@ app.controller("authCtrl", ['$scope', 'authentication', '$location' , function($
 	};
 
 	$scope.register = function(user){
-		authentication.register(user).then(function(res){
+		Authentication.register(user).then(function(res){
 			//$location.path('/#/');
 			console.log(res);
 		},
