@@ -39,7 +39,8 @@ service('Authentication', ['$http', '$window', 'requests', function($http, $wind
 
 	var register = function(user){
 		requests.register(user).then(function(res){
-			saveToken(res.token);
+			saveToken(res.data.token);
+			console.log(res);
 		},
 		function(err){
 
@@ -48,7 +49,8 @@ service('Authentication', ['$http', '$window', 'requests', function($http, $wind
 
 	var login = function(user){
 		requests.login(user).then(function(res){
-			saveToken(res.token);
+			saveToken(res.data.token);
+			console.log(res);
 		},
 		function(err){
 
@@ -58,6 +60,8 @@ service('Authentication', ['$http', '$window', 'requests', function($http, $wind
 	return {
 		saveToken: saveToken,
 		getToken: getToken,
-		logout: logout
+		logout: logout,
+		register: register,
+		login: login
 	};
 }]);

@@ -9,7 +9,7 @@
 
 <body ng-app="ecommerce">
     <div id="all">
-	    <header>
+	    <header ng-controller="indexCtrl">
 	    <!-- *** TOP ***_________________________________________________________ -->
 	        <!--<div id="top">
 	            <div class="container">
@@ -110,7 +110,7 @@
                                 <li>
                                     <a href="javascript: void(0)">Contact</a>
                                 </li>
-                                <li>
+                                <li ng-show="isLoggedIn()">
 			                        <a href="/#/login"><i class="fa fa-sign-in"></i><span>Sign in</span></a>
 	                            </li>
                             </ul>
@@ -334,7 +334,8 @@ _________________________________________________________ -->
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="client/services/requests.js"></script>
 <script type="text/javascript" src="client/services/authentication.js"></script>
+<script type="text/javascript" src="client/controllers/indexCtrl.js"></script>
 <script type="text/javascript" src="client/controllers/homeCtrl.js"></script>
-<script type="text/javascript" src="client/controllers/loginCtrl.js"></script>
+<script type="text/javascript" src="client/controllers/authCtrl.js"></script>
 
 </html>

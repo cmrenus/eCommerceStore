@@ -6,7 +6,7 @@ var passport = require('passport'),
 module.exports.register = function(req, res) {
 	var user = new User();
 
-	user = {name: req.body.name, email: req.body.email};
+	user.name = req.body.name, user.email = req.body.email;
 
 	user.createPassword(req.body.password);
 
