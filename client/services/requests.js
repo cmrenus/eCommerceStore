@@ -15,4 +15,12 @@ angular.module('ecommerce')
 				data: user
 			});
 		};
+
+		this.getAllItems = function(params){
+			return $http({
+				method: 'GET',
+				url: '/storeItems',
+				params: params
+			});
+		};
 }]);

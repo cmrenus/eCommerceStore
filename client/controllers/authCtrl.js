@@ -1,13 +1,28 @@
 app = angular.module("ecommerce");
 
-app.controller("authCtrl", ['$scope', 'Authentication', '$location' , function($scope, Authentication, $location){
+app.controller("authCtrl", ['$scope', 'Authentication', 'requests', '$window' , function($scope, Authentication, requests, $window){
 	$scope.user = {name: "",email: "", password: ""};
-
-	$scope.login = function(user){
-		Authentication.login(user);
-	};
+	$scope.failedLogin = false;
 
 	$scope.register = function(user){
-		Authentication.register(user);
+		requests.register(user).then(function(res){
+			Authentication.saveToken(res.data.token);
+			$window.location = '/#/';
+			$window.location.reload();
+		},
+		function(err){
+			alert(err);
+		});
+	}
+
+	$scope.login = function(user){
+		requests.login(user).then(function(res){
+			Authentication.saveToken(res.data.token);
+			$window.location = '/#/';
+			$window.location.reload();
+		},
+		function(err){
+			$scope.failedLogin = true;
+		});
 	};
 }]);

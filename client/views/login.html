@@ -14,9 +14,9 @@
                     <div class="form-group">
                         <input type="password" class="form-control" id="password_modal" placeholder="password" ng-model="user.password">
                     </div>
-
+                    <div class="alert alert-danger" ng-show="failedLogin" role="alert">Incorrect Credentials entered!</div>
                     <p class="text-center">
-                        <button class="btn btn-template-main" ng-click="login()"><i class="fa fa-sign-in"></i> Log in</button>
+                        <button class="btn btn-template-main" ng-click="login(user)"><i class="fa fa-sign-in"></i> Log in</button>
                     </p>
 
                 </form>

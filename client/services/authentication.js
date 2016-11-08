@@ -20,6 +20,7 @@ service('Authentication', ['$http', '$window', 'requests', function($http, $wind
 			payload = token.split('.')[1];
 			payload = $window.atob(payload);
 			payload = JSON.parse(payload);
+			console.log(payload);
 			return payload.exp > Date.now() / 1000;
 		}
 		else{
@@ -37,31 +38,11 @@ service('Authentication', ['$http', '$window', 'requests', function($http, $wind
 		}
 	};
 
-	var register = function(user){
-		requests.register(user).then(function(res){
-			saveToken(res.data.token);
-			console.log(res);
-		},
-		function(err){
-
-		});
-	}
-
-	var login = function(user){
-		requests.login(user).then(function(res){
-			saveToken(res.data.token);
-			console.log(res);
-		},
-		function(err){
-
-		});
-	};
-
 	return {
 		saveToken: saveToken,
 		getToken: getToken,
 		logout: logout,
-		register: register,
-		login: login
+		isLoggedIn: isLoggedIn,
+		currentUser: currentUser
 	};
 }]);

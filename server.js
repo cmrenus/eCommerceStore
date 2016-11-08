@@ -6,7 +6,7 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
   passport = require('passport'),
   mongoose = require('mongoose'),
-	//db = require('./server/db'),
+  db = require('./server/db'),
 	app = express();
 
 var uri='mongodb://localhost:27017/maskMakers';
@@ -31,13 +31,13 @@ app.use('/', routes);
 
 app.use('/login', authentication.login);
 app.use('/register', authentication.register);
-/*db.connect(dbURI, function(err) {
+db.connect(dbURI, function(err) {
   if (err) {
     console.log('Unable to connect to Mongo.')
     process.exit(1)
-  } else {*/
+  } else {
     app.listen(serverPort, function() {
       console.log('Server running on port ' + serverPort + '.')
     })
-  /*}
-});*/
+  }
+});

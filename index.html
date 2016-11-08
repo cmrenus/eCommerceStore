@@ -66,10 +66,10 @@
 
                             <ul class="nav navbar-nav navbar-right">
                                 <li class="active">
-                                    <a href="javascript: void(0)">Home</a>
+                                    <a href="/#/">Home</a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">Shop <b class="caret"></b></a>
+                                    <a href="/#/shop?category=all&page=1" class="dropdown-toggle" data-toggle="dropdown">Shop <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                     	<li>
                                     		<a href="/#/">All</a>
@@ -110,8 +110,22 @@
                                 <li>
                                     <a href="javascript: void(0)">Contact</a>
                                 </li>
-                                <li ng-show="isLoggedIn()">
+                                <li ng-show="!isLoggedIn">
 			                        <a href="/#/login"><i class="fa fa-sign-in"></i><span>Sign in</span></a>
+	                            </li>
+	                            <li class="dropdown" ng-show="isLoggedIn">
+									<a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">{{user.name}}<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li>
+											<a href="/#/">Settings</a>
+										</li>
+										<li>
+											<a href="/#/">Purchase History</a>
+										</li>
+										<li>
+											<a href="" ng-click="logout()">Logout</a>
+										</li>
+									</ul>
 	                            </li>
                             </ul>
 
@@ -337,5 +351,6 @@ _________________________________________________________ -->
 <script type="text/javascript" src="client/controllers/indexCtrl.js"></script>
 <script type="text/javascript" src="client/controllers/homeCtrl.js"></script>
 <script type="text/javascript" src="client/controllers/authCtrl.js"></script>
+<script type="text/javascript" src="client/controllers/allStoreItemsCtrl.js"></script>
 
 </html>

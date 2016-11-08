@@ -14,6 +14,10 @@ app.config(["$routeProvider", function($routeProvider){
 		templateUrl: "client/views/register.html",
 		controller:"authCtrl"
 	}).
+	when('/shop', {
+		templateUrl: 'client/views/allStoreItems.html',
+		controller: 'allStoreItemsCtrl'
+	}).
 	otherwise({
 		redirectTo: '/'
 	});
