@@ -71,21 +71,12 @@
                                 <li class="dropdown">
                                     <a href="/#/shop?category=all&page=1" class="dropdown-toggle" data-toggle="dropdown">Shop <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
-                                    	<li>
-                                    		<a href="/#/">All</a>
-                                 		</li>
                                         <li>
-                                        	<a href="/#/">Movie</a>
-										</li>
-										<li>
-											<a href="/#/">Video Games</a>
-										</li>
-										<li>
-											<a href="/#/">Music/EDM</a>
-										</li>
-										<li>
-											<a href="/#/">Animals</a>
-										</li>
+                                            <a href="/#/store?category=all&page=1">All</a>
+                                        </li>
+                                    	<li ng-repeat="category in categories">
+                                            <a ng-href="/#/store?category={{category}}&page=1">{{category}}</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <!--<li class="dropdown use-yamm yamm-fw">
@@ -352,5 +343,6 @@ _________________________________________________________ -->
 <script type="text/javascript" src="client/controllers/homeCtrl.js"></script>
 <script type="text/javascript" src="client/controllers/authCtrl.js"></script>
 <script type="text/javascript" src="client/controllers/allStoreItemsCtrl.js"></script>
+<script type="text/javascript" src="client/controllers/storeItemCtrl.js"></script>
 
 </html>

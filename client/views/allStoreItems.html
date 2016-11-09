@@ -34,12 +34,14 @@ _________________________________________________________ -->
                     <div class="panel-heading">
                         <h3 class="panel-title">Categories</h3>
                     </div>
-
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked category-menu">    
-                            <li class="active">
-                                <a href="shop-category.html">Ladies  <span class="badge pull-right">123</span></a>
-                                <ul>
+                            <li>
+                                <a href="/#/shop?category=all&page=1">All  <span class="badge pull-right">123</span></a>
+                            </li>
+                            <li ng-repeat="category in categories">
+                                <a href="shop-category.html">{{category}}  <span class="badge pull-right">123</span></a>
+                                <!--<ul>
                                     <li><a href="shop-category.html">T-shirts</a>
                                     </li>
                                     <li><a href="shop-category.html">Skirts</a>
@@ -48,7 +50,7 @@ _________________________________________________________ -->
                                     </li>
                                     <li><a href="shop-category.html">Accessories</a>
                                     </li>
-                                </ul>
+                                </ul>-->
                             </li>
 
                         </ul>
@@ -72,17 +74,17 @@ _________________________________________________________ -->
 
                 <div class="row products">
 
-                    <div class="col-md-4 col-sm-6">
+                    <div ng-repeat="item in allItems" class="col-md-4 col-sm-6">
                         <div class="product">
                             <div class="image">
                                 <a href="shop-detail.html">
-                                    <img src="img/product1.jpg" alt="" class="img-responsive image1">
+                                    <img ng-src="{{item.images[0]}}" alt="" class="img-responsive image1">
                                 </a>
                             </div>
                             <!-- /.image -->
                             <div class="text">
-                                <h3><a href="shop-detail.html">Fur coat with very but very very long name</a></h3>
-                                <p class="price">$143.00</p>
+                                <h3><a ng-href="/#/shop/{{item.sku}}">{{item.name}}</a></h3>
+                                <p class="price">{{item.price | currency}}</p>
                                 <p class="buttons">
                                     <a href="shop-detail.html" class="btn btn-default">View detail</a>
                                     <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -92,7 +94,7 @@ _________________________________________________________ -->
                         </div>
                         <!-- /.product -->
                     </div>
-
+                    <!--
                     <div class="col-md-4 col-sm-6">
                         <div class="product">
                             <div class="image">
@@ -100,7 +102,6 @@ _________________________________________________________ -->
                                     <img src="img/product2.jpg" alt="" class="img-responsive image1">
                                 </a>
                             </div>
-                            <!-- /.image -->
                             <div class="text">
                                 <h3><a href="shop-detail.html">White Blouse Armani</a></h3>
                                 <p class="price"><del>$280</del> $143.00</p>
@@ -109,22 +110,18 @@ _________________________________________________________ -->
                                     <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
                                 </p>
                             </div>
-                            <!-- /.text -->
 
                             <div class="ribbon sale">
                                 <div class="theribbon">SALE</div>
                                 <div class="ribbon-background"></div>
                             </div>
-                            <!-- /.ribbon -->
 
                             <div class="ribbon new">
                                 <div class="theribbon">NEW</div>
                                 <div class="ribbon-background"></div>
                             </div>
-                            <!-- /.ribbon -->
                         </div>
-                        <!-- /.product -->
-                    </div>
+                    </div>-->
 
                 </div>
                 <!-- /.products -->

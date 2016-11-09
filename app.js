@@ -18,6 +18,10 @@ app.config(["$routeProvider", function($routeProvider){
 		templateUrl: 'client/views/allStoreItems.html',
 		controller: 'allStoreItemsCtrl'
 	}).
+	when('/shop/:sku', {
+		templateUrl: 'client/views/storeItem.html',
+		controller: 'storeItemCtrl'
+	}).
 	otherwise({
 		redirectTo: '/'
 	});

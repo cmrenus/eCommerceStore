@@ -1,0 +1,44 @@
+[
+	{
+		"sku": "000001",
+		"name": "Marshmello V3",
+		"description": "",
+		"price": 2000.00,
+		"stock": 13,
+		"category": "Music/EDM",
+		"subCategory": "Marshmello",
+		"keywords": [],
+		"discount": 0,
+		"dateAdded": {"$date": "2016-11-09T23:32:18Z"},
+		"mostRecentPurchase": "",
+		"images": ["./resources/images/items/MarshmelloV3/img1.jpg", "./resources/images/items/MarshmelloV3/img2.jpg"]
+	},
+	{
+		"sku": "000002",
+		"name": "Marshmello V2",
+		"description": "",
+		"price": 400.00,
+		"stock": 4,
+		"category": "Music/EDM",
+		"subCategory": "Marshmello",
+		"keywords": [],
+		"discount": 0,
+		"dateAdded": {"$date": "2016-11-09T23:32:18Z"},
+		"mostRecentPurchase": "",
+		"images": ["./resources/images/items/MarshmelloV2/img1.jpg", "./resources/images/items/MarshmelloV2/img2.jpg"]
+	},
+	{
+		"sku": "000003",
+		"name": "Master Chief",
+		"description": "Replica of Halo's Master Chief himself! Made from high quality 3d printed plastic components. Filled with foam to make wearing the helmet a comfortable experience!",
+		"price": 300.00,
+		"stock": 32,
+		"category": "Video Games",
+		"subCategory": "Halo",
+		"keywords": [],
+		"discount": 0,
+		"dateAdded": {"$date": "2016-11-09T23:32:18Z"},
+		"mostRecentPurchase": "",
+		"images": ["./resources/images/items/Halo/MasterChief/img1.jpg", "./resources/images/items/Halo/MasterChief/img2.jpg"]
+	}
+]

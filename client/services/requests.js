@@ -23,4 +23,19 @@ angular.module('ecommerce')
 				params: params
 			});
 		};
+
+		this.getCategories = function(){
+			return $http({
+				method: 'GET',
+				url: '/categories'
+			});
+		};
+
+		this.getItemDetails = function(sku){
+			return $http({
+				method: 'GET',
+				url: '/storeItem',
+				params: {sku: sku}
+			});
+		};
 }]);
