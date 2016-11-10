@@ -77,7 +77,7 @@ _________________________________________________________ -->
                     <div ng-repeat="item in allItems" class="col-md-4 col-sm-6">
                         <div class="product">
                             <div class="image">
-                                <a href="shop-detail.html">
+                                <a ng-href="/#/shop/{{item.sku}}">
                                     <img ng-src="{{item.images[0]}}" alt="" class="img-responsive image1">
                                 </a>
                             </div>
