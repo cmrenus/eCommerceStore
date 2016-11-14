@@ -3,6 +3,7 @@ var app = angular.module("ecommerce");
 app.controller("allStoreItemsCtrl", ["$scope","requests", "$location", function($scope, requests, $location){
 	$scope.allItems = [];
 	$scope.categories = [];
+	$scope.currentCategory = $location.search().category;
 	
 
 	var init = function(){

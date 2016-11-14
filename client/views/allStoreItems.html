@@ -2,13 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-7">
-                <h1>Category with left sidebar</h1>
+                <h1>Store</h1>
             </div>
             <div class="col-md-5">
                 <ul class="breadcrumb">
                     <li><a href="index.html">Home</a>
                     </li>
-                    <li>Category with left sidebar</li>
+                    <li>{{currentCategory}}</li>
                 </ul>
 
             </div>
@@ -40,7 +40,7 @@ _________________________________________________________ -->
                                 <a href="/#/shop?category=all&page=1">All  <span class="badge pull-right">123</span></a>
                             </li>
                             <li ng-repeat="category in categories">
-                                <a href="shop-category.html">{{category}}  <span class="badge pull-right">123</span></a>
+                                <a ng-href="/#/shop?category={{category}}&page=1">{{category}}  <span class="badge pull-right">123</span></a>
                                 <!--<ul>
                                     <li><a href="shop-category.html">T-shirts</a>
                                     </li>
