@@ -98,7 +98,7 @@ _________________________________________________________ -->
                                 <p class="price">{{item.price | currency}}</p>
 
                                 <p class="text-center">
-                                    <button class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                                    <button ng-click="addToCart(item.sku)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></button>
                                 </p>
 

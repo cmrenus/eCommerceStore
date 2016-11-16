@@ -9,8 +9,13 @@ var express = require('express'),
   db = require('./server/db'),
 	app = express();
 
+var jwt = require('express-jwt');
+var auth = jwt({
+  secret: 'MY_SECRET',
+  userProperty: 'payload'
+});
 var dbURI='mongodb://localhost:27017/maskMakers';
-var mongoosedb = require('mongoose').createConnection(dbURI);
+var mongoosedb = require('mongoose').connect(dbURI);
 
 require('./server/models/user');
 require('./server/config/strategy')

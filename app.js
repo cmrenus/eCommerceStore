@@ -22,6 +22,9 @@ app.config(["$routeProvider", function($routeProvider){
 		templateUrl: 'client/views/storeItem.html',
 		controller: 'storeItemCtrl'
 	}).
+	when('/cart', {
+		templateUrl: 'client/views/cart.html'
+	}).
 	otherwise({
 		redirectTo: '/'
 	});

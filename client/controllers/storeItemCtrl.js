@@ -18,4 +18,8 @@ app.controller("storeItemCtrl", ["$scope", "requests", '$routeParams', function(
 		alert(err);
 	});
 
+	addToCart = function(sku){
+		
+	}
+
 }]);
