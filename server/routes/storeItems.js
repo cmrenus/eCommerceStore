@@ -21,7 +21,7 @@ var db = require('../db');
 			if(err) res.status(400).json(err);
 			res.status(200).json(docs);
 		});
-	})
+	});
 
 	router.get('/storeItem', function(req, res){
 		var collection = db.get().collection('items');
@@ -29,7 +29,7 @@ var db = require('../db');
 			if(err) res.status(400).json(err);
 			res.status(200).json(docs[0]);
 		});
-	})
+	});
 
 	router.post('/addToCart', function(req, res){
 		if(!req.session.cart){
@@ -109,6 +109,17 @@ var db = require('../db');
 			
 		}
 	});
+
+
+
+
+
+
+
+
+
+
+
 	module.exports = router;/*
 module.exports.getStoreItems = function(req, res){
 	if(req.params.category){

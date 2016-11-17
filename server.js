@@ -72,6 +72,7 @@ app.use(function(req, res, next){
 app.use('/login', authentication.login);
 app.use('/register', authentication.register);
 app.use('/changePassword', auth, authentication.changePassword);
+app.use('/saveUserInfo', auth, authentication.saveUserInfo);
 /*app.use('/storeItems', items.getStoreItems);
 app.use('/categories', items.getCategories);
 app.use('/storeItem', items.getStoreItemDetails);

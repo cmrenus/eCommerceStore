@@ -5,8 +5,10 @@ User: {
 	id: id
 }
 
-purchases: {
+orders: {
 	userID: id,
+	orderNum: int,
+	totalCost: float,
 	date: date,
 	items: [{
 		sku: int,
@@ -31,6 +33,7 @@ items: {
 }
 
 ratings: {
+	userID: id,
 	sku: int,
 	rate: int,
 	comments: string

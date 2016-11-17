@@ -80,4 +80,15 @@ angular.module('ecommerce')
 			    }
 			});
 		};
+
+		this.saveUserInfo = function(user){
+			return $http({
+				method: 'PUT',
+				url: '/saveUserInfo',
+				data: {user: user},
+				headers: {
+			    	Authorization: 'Bearer '+ Authentication.getToken()
+			    }
+			})
+		}
 }]);

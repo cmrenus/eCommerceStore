@@ -80,13 +80,13 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="firstname">Firstname</label>
-                                <input type="text" class="form-control" id="firstname">
+                                <input ng-model="user.firstName" type="text" class="form-control" id="firstname">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="lastname">Lastname</label>
-                                <input type="text" class="form-control" id="lastname">
+                                <input ng-model="user.lastName" type="text" class="form-control" id="lastname">
                             </div>
                         </div>
                     </div>
@@ -96,13 +96,13 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="company">Company</label>
-                                <input type="text" class="form-control" id="company">
+                                <input ng-model="user.company" type="text" class="form-control" id="company">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="street">Street</label>
-                                <input type="text" class="form-control" id="street">
+                                <input ng-model="user.street" type="text" class="form-control" id="street">
                             </div>
                         </div>
                     </div>
@@ -111,43 +111,43 @@
                     <div class="row">
                         <div class="col-sm-6 col-md-3">
                             <div class="form-group">
-                                <label for="city">Company</label>
-                                <input type="text" class="form-control" id="city">
+                                <label for="city">City</label>
+                                <input ng-model="user.city" type="text" class="form-control" id="city">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="form-group">
                                 <label for="zip">ZIP</label>
-                                <input type="text" class="form-control" id="zip">
+                                <input ng-model="user.zip" type="text" class="form-control" id="zip">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="form-group">
                                 <label for="state">State</label>
-                                <select class="form-control" id="state"></select>
+                                <select ng-model="user.state" class="form-control" id="state"></select>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
                             <div class="form-group">
                                 <label for="country">Country</label>
-                                <select class="form-control" id="country"></select>
+                                <select ng-model="user.country" class="form-control" id="country"></select>
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="phone">Telephone</label>
-                                <input type="text" class="form-control" id="phone">
+                                <input ng-model="user.telephone" type="text" class="form-control" id="phone">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="email_account">Email</label>
-                                <input type="text" class="form-control" id="email_account">
+                                <input ng-model="user.email" type="text" class="form-control" id="email_account" ng-disabled="true">
                             </div>
                         </div>
                         <div class="col-sm-12 text-center">
-                            <button type="submit" class="btn btn-template-main"><i class="fa fa-save"></i> Save changes</button>
+                            <button ng-click="saveUserInfo(user)" class="btn btn-template-main"><i class="fa fa-save"></i> Save changes</button>
 
                         </div>
 

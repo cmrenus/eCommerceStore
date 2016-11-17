@@ -20,7 +20,6 @@ service('Authentication', ['$http', '$window', function($http, $window){
 			payload = token.split('.')[1];
 			payload = $window.atob(payload);
 			payload = JSON.parse(payload);
-			console.log(payload);
 			return payload.exp > Date.now() / 1000;
 		}
 		else{
@@ -34,7 +33,7 @@ service('Authentication', ['$http', '$window', function($http, $window){
 			var payload = token.split('.')[1];
 			payload = $window.atob(payload);
 			payload = JSON.parse(payload);
-			return {email: payload.email, name: payload.name};
+			return payload;
 		}
 	};
 

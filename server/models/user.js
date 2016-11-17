@@ -9,9 +9,34 @@ var userSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-  name: {
+  firstName: {
     type: String,
     required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  },
+  company: {
+    type: String
+  },
+  stree: {
+    type: String
+  },
+  city: {
+    type: String
+  },
+  zip: {
+    type: Number
+  },
+  state: {
+    type: String
+  },
+  country: {
+    type: String
+  },
+  telephone: {
+    type: String
   },
   hash: String,
   salt: String
@@ -34,7 +59,15 @@ userSchema.methods.generateJwt = function() {
   return jwt.sign({
     _id: this._id,
     email: this.email,
-    name: this.name,
+    firstName: this.firstName,
+    lastName: this.lastName,
+    company: this.company,
+    street: this.street,
+    city: this.city,
+    zip: this.zip,
+    state: this.state,
+    country: this.country,
+    telephone: this.telephone,
     exp: parseInt(expiry.getTime() / 1000),
   }, "MY_SECRET");
 };

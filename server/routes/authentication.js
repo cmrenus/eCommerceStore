@@ -58,4 +58,33 @@ module.exports.changePassword = function(req, res){
 	    	}
 	    });
 	}
+};
+
+module.exports.saveUserInfo = function(req, res){
+	if(!req.payload._id) {
+		res.status(401).json("unauthorized access: Private Profile");
+	}
+	else{
+		User.findById(req.payload._id).exec(function(err, user){
+			if(err){
+				res.status(400).json(err);
+				return;
+			}
+			var newInfo = req.body.user;
+			user.firstName = newInfo.firstName;
+			user.lastName = newInfo.lastName;
+			user.company = newInfo.company;
+			user.street = newInfo.street;
+			user.city = newInfo.city;
+			user.zip = newInfo.zip;
+			user.state = newInfo.state;
+			user.country = newInfo.country;
+			user.telephone = newInfo.telephone;
+			user.save(function(err){
+				if(err){console.log(err); res.status(500).send(err); return;}
+				var token = user.generateJwt();
+				res.status(200).json({message: "Info successfully changed!", token: token});
+			});
+		});
+	}
 }

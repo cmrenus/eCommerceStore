@@ -6,7 +6,10 @@ app.controller("cartCtrl", ['$scope', 'requests', '$window', function($scope, re
 	requests.getCartItems().then(function(res){
 		$scope.cart = res.data.cartDetails;
 		$scope.quantities = res.data.cart;
-		console.log(res.data.cart);
+		console.log(res.data);
+		if(res.data.empty){
+			$scope.empty = true;
+		}
 	},
 	function(err){
 		console.log(err);
@@ -17,6 +20,7 @@ app.controller("cartCtrl", ['$scope', 'requests', '$window', function($scope, re
 		requests.removeCartItem($scope.cart[index].sku).then(function(res){
 			$scope.totalCost = $scope.totalCost - $scope.cart[index].price;
 			$scope.cart.splice(index,1);
+			$window.location.reload();
 		},
 		function(err){
 			console.log(err);
