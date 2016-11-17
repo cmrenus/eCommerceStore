@@ -23,7 +23,17 @@ app.config(["$routeProvider", function($routeProvider){
 		controller: 'storeItemCtrl'
 	}).
 	when('/cart', {
-		templateUrl: 'client/views/cart.html'
+		templateUrl: 'client/views/cart.html',
+		controller: 'cartCtrl'
+	}).
+	when('/userAccount', {
+		templateUrl: '/client/views/userAccount.html'
+	}).
+	when('/myOrders', {
+		templateUrl: '/client/views/userOrders.html'
+	}).
+	when('/myWishlist', {
+		templateUrl: '/client/views/wishlist.html'
 	}).
 	otherwise({
 		redirectTo: '/'

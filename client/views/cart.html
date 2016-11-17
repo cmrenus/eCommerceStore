@@ -10,7 +10,7 @@
 
             <div class="box">
 
-                <form method="post" action="shop-checkout1.html">
+                <form>
 
                     <div class="table-responsive">
                         <table class="table">
@@ -23,22 +23,22 @@
                                     <th colspan="2">Total</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody ng-init="totalCost = 0">
                                 <tr ng-repeat="item in cart">
                                     <td>
                                         <a href="#">
-                                            <img src="{{item.images[0]}}" alt="{{item.name}}">
+                                            <img ng-src="{{item.images[0]}}" alt="{{item.name}}">
                                         </a>
                                     </td>
                                     <td><a href="#">{{item.name}}</a>
                                     </td>
                                     <td>
-                                        <input type="number" value="item.count" class="form-control">
+                                        <input type="number" ng-model="quantities[item.sku].quantity" class="form-control">
                                     </td>
                                     <td>{{item.price | currency}}</td>
                                     <td>{{item.price * item.discount | currency}}</td>
-                                    <td>{{(item.price - (item.price * item.discount)) * item.count | currency}}</td>
-                                    <td><a href="#"><i class="fa fa-trash-o"></i></a>
+                                    <td ng-init="costs[$index] = (item.price - (item.price * item.discount)) * quantities[item.sku].quantity; $parent.totalCost = $parent.totalCost + costs[$index]">{{ costs[$index] | currency}}</td>
+                                    <td><a ng-href="" ng-click="removeItem($index)"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
                                 <!--<tr>
@@ -62,7 +62,7 @@
                             <tfoot>
                                 <tr>
                                     <th colspan="5">Total</th>
-                                    <th colspan="2">{{totalCost}}</th>
+                                    <th colspan="2">{{totalCost | currency}}</th>
                                 </tr>
                             </tfoot>
                         </table>
@@ -75,8 +75,8 @@
                             <a href="shop-category.html" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
                         </div>
                         <div class="pull-right">
-                            <button class="btn btn-default"><i class="fa fa-refresh"></i> Update cart</button>
-                            <button type="submit" class="btn btn-template-main">Proceed to checkout <i class="fa fa-chevron-right"></i>
+                            <button ng-click="updateCart()" class="btn btn-default"><i class="fa fa-refresh"></i> Update cart</button>
+                            <button ng-click="checkout()" class="btn btn-template-main">Proceed to checkout <i class="fa fa-chevron-right"></i>
                             </button>
                         </div>
                     </div>

@@ -38,4 +38,35 @@ angular.module('ecommerce')
 				params: {sku: sku}
 			});
 		};
+
+		this.addToCart = function(sku, quantity){
+			return $http({
+				method: 'POST',
+				url: '/addToCart',
+				data: {sku: sku, quantity: quantity}
+			});
+		}
+
+		this.getCartItems = function(){
+			return $http({
+				method: 'GET',
+				url: '/cartItems'
+			});
+		};
+
+		this.removeCartItem = function(sku){
+			return $http({
+				method: 'DELETE',
+				url: '/removeCartItem',
+				params: {sku: sku}
+			});
+		};
+
+		this.updateCart = function(data){
+			return $http({
+				method: 'PUT',
+				url: '/updateCart',
+				data: data
+			});
+		};
 }]);
