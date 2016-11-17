@@ -27,7 +27,8 @@ app.config(["$routeProvider", function($routeProvider){
 		controller: 'cartCtrl'
 	}).
 	when('/userAccount', {
-		templateUrl: '/client/views/userAccount.html'
+		templateUrl: '/client/views/userAccount.html',
+		controller: 'userAccountCtrl'
 	}).
 	when('/myOrders', {
 		templateUrl: '/client/views/userOrders.html'

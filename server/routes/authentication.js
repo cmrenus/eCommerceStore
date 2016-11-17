@@ -33,3 +33,29 @@ module.exports.login = function(req, res){
 		}
 	})(req, res);
 };
+
+module.exports.changePassword = function(req, res){
+	if (!req.payload._id) {
+	    res.status(401).json({
+	      "message" : "UnauthorizedError: private profile"
+	    });
+	} else {
+	    // Otherwise continue
+	    User.findById(req.payload._id).exec(function(err, user) {
+	    	if(err){
+	    		res.status(400).json(err);
+	    	}
+
+	    	if(user.validatePassword(req.body.old) && req.body.new == req.body.retype){
+	    		user.createPassword(req.body.new);
+	    		user.save(function(err){
+	    			if(err){res.status(500).send(err)}
+	    			res.status(200).json("Password successfully changed!");
+	    		});
+	    	}
+	    	else{
+	    		res.status(402).json("Incorrect passwords");
+	    	}
+	    });
+	}
+}

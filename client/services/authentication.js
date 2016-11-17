@@ -1,5 +1,5 @@
 angular.module('ecommerce').
-service('Authentication', ['$http', '$window', 'requests', function($http, $window, requests){
+service('Authentication', ['$http', '$window', function($http, $window){
 	var saveToken = function(token){
 		$window.localStorage['userToken'] = token;
 	};

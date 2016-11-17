@@ -13,10 +13,12 @@ var express = require('express'),
   cookie = require('cookie');
 
 var jwt = require('express-jwt');
+
 var auth = jwt({
   secret: 'MY_SECRET',
   userProperty: 'payload'
 });
+
 var dbURI='mongodb://localhost:27017/maskMakers';
 var mongoosedb = require('mongoose').connect(dbURI);
 var sessionStore = new MongoDBStore({
@@ -69,6 +71,7 @@ app.use(function(req, res, next){
 */
 app.use('/login', authentication.login);
 app.use('/register', authentication.register);
+app.use('/changePassword', auth, authentication.changePassword);
 /*app.use('/storeItems', items.getStoreItems);
 app.use('/categories', items.getCategories);
 app.use('/storeItem', items.getStoreItemDetails);

@@ -1,5 +1,5 @@
 angular.module('ecommerce')
-.service('requests', ['$http', function($http){
+.service('requests', ['$http', 'Authentication', function($http, Authentication){
 		this.login = function(user){
 			return $http({
 				method: 'POST',
@@ -67,6 +67,17 @@ angular.module('ecommerce')
 				method: 'PUT',
 				url: '/updateCart',
 				data: data
+			});
+		};
+
+		this.changePassword = function(passwords){
+			return $http({
+				method: 'PUT',
+				url: '/changePassword',
+				data: passwords,
+				headers: {
+			    	Authorization: 'Bearer '+ Authentication.getToken()
+			    }
 			});
 		};
 }]);
