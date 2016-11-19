@@ -1,0 +1,160 @@
+ <div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Order # {{order.orderNum}}</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb">
+
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li><a href="customer-orders.html">My orders</a>
+                    </li>
+                    <li>Order # {{order.orderNum}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="content">
+    <div class="container">
+
+        <div class="row">
+
+            <!-- *** LEFT COLUMN ***
+	 _________________________________________________________ -->
+
+            <div class="col-md-9 clearfix" id="customer-order">
+
+                <p class="lead">Order #{{order.orderNum}} was placed on <strong>{{order.date | date: "MM/d/yyyy"}}</strong> and is currently <strong>Being prepared</strong>.</p>
+                <p class="lead text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
+
+                <div class="box">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Product</th>
+                                    <th>Quantity</th>
+                                    <th>Unit price</th>
+                                    <th>Discount</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in order.items">
+                                    <td>
+                                        <a ng-href="/#/shop/{{item.sku}}">
+                                            <img ng-src="{{item.images[0]}}" alt="{{item.name}}">
+                                        </a>
+                                    </td>
+                                    <td><a ng-href="/#/shop/{{item.sku}}">{{item.name}}</a>
+                                    </td>
+                                    <td>{{order.cart[item.sku].quantity}}</td>
+                                    <td>{{item.price | currency}}</td>
+                                    <td>{{item.discount | currency}}</td>
+                                    <td>{{item.price * order.cart[item.sku].quantity | currency}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="5" class="text-right">Order subtotal</th>
+                                    <th>{{order.totalCost - 10 | currency}}</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="5" class="text-right">Shipping and handling</th>
+                                    <th>$10.00</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="5" class="text-right">Tax</th>
+                                    <th>$0.00</th>
+                                </tr>
+                                <tr>
+                                    <th colspan="5" class="text-right">Total</th>
+                                    <th>{{order.totalCost | currency}}</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                    </div>
+                    <!-- /.table-responsive -->
+
+                    <div class="row addresses">
+                        <div class="col-sm-6">
+                            <h3 class="text-uppercase">Invoice address</h3>
+                            <p>John Brown
+                                <br>13/25 New Avenue
+                                <br>New Heaven
+                                <br>45Y 73J
+                                <br>England
+                                <br>Great Britain</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h3 class="text-uppercase">Shipping address</h3>
+                            <p>John Brown
+                                <br>13/25 New Avenue
+                                <br>New Heaven
+                                <br>45Y 73J
+                                <br>England
+                                <br>Great Britain</p>
+                        </div>
+                    </div>
+                    <!-- /.addresses -->
+
+                </div>
+                <!-- /.box -->
+
+            </div>
+            <!-- /.col-md-9 -->
+
+            <!-- *** LEFT COLUMN END *** -->
+
+            <!-- *** RIGHT COLUMN ***
+	 _________________________________________________________ -->
+
+            <div class="col-md-3">
+                <!-- *** CUSTOMER MENU ***
+_________________________________________________________ -->
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Customer section</h3>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <ul class="nav nav-pills nav-stacked">
+                            <li>
+                                <a ng-href="/#/myOrders"><i class="fa fa-list"></i> My orders</a>
+                            </li>
+                            <li>
+                                <a ng-href="/#/myWishlist"><i class="fa fa-heart"></i> My wishlist</a>
+                            </li>
+                            <li>
+                                <a ng-href="/#/userAccount"><i class="fa fa-user"></i> My account</a>
+                            </li>
+                            <li>
+                                <a href="index.html"><i class="fa fa-sign-out"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /.col-md-3 -->
+
+                <!-- *** CUSTOMER MENU END *** -->
+            </div>
+
+            <!-- *** RIGHT COLUMN END *** -->
+
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->

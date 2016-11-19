@@ -89,6 +89,37 @@ angular.module('ecommerce')
 				headers: {
 			    	Authorization: 'Bearer '+ Authentication.getToken()
 			    }
-			})
-		}
+			});
+		};
+
+		this.checkout = function(){
+			return $http({
+				method: 'POST',
+				url: '/checkout',
+				headers: {
+			    	Authorization: 'Bearer '+ Authentication.getToken()
+			    }
+			});
+		};
+
+		this.getOrders = function(){
+			return $http({
+				method: 'GET',
+				url: '/getOrders',
+				headers: {
+			    	Authorization: 'Bearer '+ Authentication.getToken()
+			    }
+			});
+		};
+
+		this.getOrder = function(orderNum){
+			return $http({
+				method: 'GET',
+				url: '/getOrder',
+				headers: {
+			    	Authorization: 'Bearer '+ Authentication.getToken()
+			    },
+			   	params: {orderNum: orderNum}
+			});
+		};
 }]);

@@ -31,7 +31,12 @@ app.config(["$routeProvider", function($routeProvider){
 		controller: 'userAccountCtrl'
 	}).
 	when('/myOrders', {
-		templateUrl: '/client/views/userOrders.html'
+		templateUrl: '/client/views/userOrders.html',
+		controller: 'userOrdersCtrl'
+	}).
+	when('/myOrders/:orderNum', {
+		templateUrl: '/client/views/userOrder.html',
+		controller: 'userOrderCtrl'
 	}).
 	when('/myWishlist', {
 		templateUrl: '/client/views/wishlist.html'

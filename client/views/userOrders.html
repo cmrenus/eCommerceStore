@@ -45,13 +45,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th># 1735</th>
-                                    <td>22/06/2013</td>
-                                    <td>$ 150.00</td>
-                                    <td><span class="label label-info">Being prepared</span>
+                                <tr ng-repeat="order in orders">
+                                    <th># {{order.orderNum}}</th>
+                                    <td>{{order.date | date: M/d/yyyy}}</td>
+                                    <td>{{order.totalCost | currency}}</td>
+                                    <td><span class="label label-info">{{order.status}}</span>
                                     </td>
-                                    <td><a href="customer-order.html" class="btn btn-template-main btn-sm">View</a>
+                                    <td><a ng-href="/#/myOrders/{{order.orderNum}}" class="btn btn-template-main btn-sm">View</a>
                                     </td>
                                 </tr>
                             </tbody>

@@ -37,6 +37,13 @@ app.controller("cartCtrl", ['$scope', 'requests', '$window', function($scope, re
 	};
 
 	$scope.checkout = function(){
-
+		requests.checkout().then(function(res){
+			console.log(res);
+			$window.location = '/#/completedPurchase';
+			$window.location.reload();
+		},
+		function(err){
+			console.log(err);
+		});
 	};
 }]);

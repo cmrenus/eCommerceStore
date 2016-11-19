@@ -17,9 +17,12 @@ app.controller('indexCtrl', ['$scope', 'Authentication', '$window','requests', f
 	});
 
 	requests.getCartItems().then(function(res){
-		console.log(res.data.cart);
-		$scope.numCartItems = Object.keys(res.data.cart).length;
-		console.log($scope.numCartItems);
+		if(res.data.cart == undefined){
+			$scope.numCartItems = 0;
+		}
+		else{
+			$scope.numCartItems = Object.keys(res.data.cart).length;
+		}
 	},
 	function(err){
 		console.log(err);
