@@ -1,6 +1,6 @@
 var app = angular.module("ecommerce");
 
-app.controller('indexCtrl', ['$scope', 'Authentication', '$window','requests', function($scope, Authentication, $window, requests){
+app.controller('indexCtrl', ['$scope', 'Authentication', '$window','requests', '$location', function($scope, Authentication, $window, requests, $location){
 
 	$scope.isLoggedIn = Authentication.isLoggedIn();
 	$scope.user = {};
@@ -33,4 +33,11 @@ app.controller('indexCtrl', ['$scope', 'Authentication', '$window','requests', f
 		$window.location = '/#/';
 		$window.location.reload();
 	}
+
+	//Menu Items
+    $scope.isActive = function (viewLocation) { 
+        return viewLocation === $location.path();
+    };
+    console.log($location.path());
+    console.log($window);
 }]);

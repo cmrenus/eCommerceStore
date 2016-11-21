@@ -65,17 +65,17 @@
                         <div class="navbar-collapse collapse" id="navigation">
 
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="active">
+                                <li ng-class="{active: isActive('/')}">
                                     <a href="/#/">Home</a>
                                 </li>
-                                <li class="dropdown">
-                                    <a href="/#/shop?category=all&page=1" class="dropdown-toggle" data-toggle="dropdown">Shop <b class="caret"></b></a>
+                                <li class="dropdown" ng-class="{active: isActive('/shop')}">
+                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Shop <b class="caret"></b></a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="/#/store?category=all&page=1">All</a>
+                                            <a href="/#/shop?category=all&page=1">All</a>
                                         </li>
                                     	<li ng-repeat="category in categories">
-                                            <a ng-href="/#/store?category={{category}}&page=1">{{category}}</a>
+                                            <a ng-href="/#/shop?category={{category}}&page=1">{{category}}</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -98,20 +98,20 @@
                                     </ul>
                                 </li>-->
 
-                                <li>
+                                <li ng-class="{active: isActive('/contact')}">
                                     <a href="javascript: void(0)">Contact</a>
                                 </li>
-                                <li ng-show="!isLoggedIn">
+                                <li ng-class="{active: isActive('/login')}" ng-show="!isLoggedIn">
 			                        <a href="/#/login"><i class="fa fa-sign-in"></i><span>Sign in</span></a>
 	                            </li>
-	                            <li class="dropdown" ng-show="isLoggedIn">
+	                            <li ng-class="{active: isActive('/userAccount') || isActive('/myOrders')}" class="dropdown" ng-show="isLoggedIn">
 									<a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">{{user.firstName}}<b class="caret"></b></a>
 									<ul class="dropdown-menu">
 										<li>
 											<a href="/#/userAccount">Settings</a>
 										</li>
 										<li>
-											<a href="/#/">Purchase History</a>
+											<a href="/#/myOrders">Purchase History</a>
 										</li>
 										<li>
 											<a href="" ng-click="logout()">Logout</a>

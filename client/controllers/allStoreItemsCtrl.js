@@ -26,4 +26,8 @@ app.controller("allStoreItemsCtrl", ["$scope","requests", "$location", function(
 	}
 	init();
 
+
+	$scope.isActive = function(category){
+		return category === $scope.currentCategory;
+	}
 }]);	
