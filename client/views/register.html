@@ -42,17 +42,18 @@
 
                 <hr>
 
-                <form action="customer-orders.html" method="post">
+                <form>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="text" class="form-control" id="email">
+                        <input type="text" ng-model="loginUser.email" class="form-control" id="email">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password">
+                        <input type="password" ng-model="loginUser.password" class="form-control" id="password">
                     </div>
+                    <div class="alert alert-danger" ng-show="failedLogin" role="alert">Incorrect Credentials entered!</div>
                     <div class="text-center">
-                        <button type="submit" class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
+                        <button ng-click="login(loginUser)" class="btn btn-template-main"><i class="fa fa-sign-in"></i> Log in</button>
                     </div>
                 </form>
             </div>

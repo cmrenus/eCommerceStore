@@ -14,11 +14,12 @@ var auth = jwt({
 });
 
 	router.get('/storeItems', function(req,res){
-		if(req.params.category){
-
+		var query = {category: req.query.category};
+		if(req.query.category == "all"){
+			query = {};
 		}
 		var collection = db.get().collection('items');
-		collection.find().toArray(function(err, docs){
+		collection.find(query).toArray(function(err, docs){
 			if(err){
 				res.status(400).json(err);
 			}

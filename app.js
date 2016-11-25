@@ -8,7 +8,7 @@ app.config(["$routeProvider", function($routeProvider){
 	}).
 	when('/login', {
 		templateUrl: "client/views/login.html",
-		controller:"authCtrl"
+		controller:"authCtrl",
 	}).
 	when('/register', {
 		templateUrl: "client/views/register.html",
@@ -28,20 +28,38 @@ app.config(["$routeProvider", function($routeProvider){
 	}).
 	when('/userAccount', {
 		templateUrl: '/client/views/userAccount.html',
-		controller: 'userAccountCtrl'
+		controller: 'userAccountCtrl',
+		restricted: true
 	}).
 	when('/myOrders', {
 		templateUrl: '/client/views/userOrders.html',
-		controller: 'userOrdersCtrl'
+		controller: 'userOrdersCtrl',
+		restricted: true
 	}).
 	when('/myOrders/:orderNum', {
 		templateUrl: '/client/views/userOrder.html',
-		controller: 'userOrderCtrl'
+		controller: 'userOrderCtrl',
+		restricted: true
 	}).
 	when('/myWishlist', {
-		templateUrl: '/client/views/wishlist.html'
+		templateUrl: '/client/views/wishlist.html',
+		restricted: true
+	}).
+	when('/contact', {
+		templateUrl: '/client/views/contact.html'
 	}).
 	otherwise({
 		redirectTo: '/'
+	});
+}]);
+
+app.run(['$rootScope', '$location', '$route', 'Authentication', function($rootScope, $location, $route, Authentication){
+	$rootScope.$on("$routeChangeStart", function(event, next, current){
+		if(next.$$route != undefined && next.$$route.restricted == true && !Authentication.isLoggedIn()){
+			$location.path('/');
+		}
+		if((next.$$route.originalPath === '/login' || next.$$route.originalPath === '/register') && Authentication.isLoggedIn()){
+			$location.path('/');
+		}
 	});
 }]);
