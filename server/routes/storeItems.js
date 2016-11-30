@@ -82,6 +82,16 @@ var auth = jwt({
 		}
 	});
 
+	router.delete('/cartItems', function(req, res){
+		if(!req.session.cart || Object.keys(req.session.cart).length == 0){
+			res.status(200).send({empty: true, message: "No items in cart"});
+		}
+		else{
+			req.session.cart = undefined;
+			res.status(200).send("Cart Cleared");
+		}
+	});
+
 	router.delete('/removeCartItem', function(req, res){
 		console.log(req.query.sku);
 		if(!req.session.cart || Object.keys(req.session.cart).length == 0){
@@ -226,10 +236,57 @@ var auth = jwt({
 		}
 	});
 
+	router.get('/getItemRating', function(req, res){
 
+		var collection = db.get().collection("ratings");
+		collection.aggregate([
+			{	
+				$match: {sku: req.query.sku}
+			},
+			{
+				$group: {
+					_id: 0,
+					rating: {$avg: "$rate"}
+				}
+			}
+		], function(err, docs){
+			if(err){console.log(err); return;}
+			res.send(docs[0]);
+		});
+	});
 
+	router.post('/addRating', auth, function(req, res){
+		if(!req.payload._id){
+			res.status(400).send("No user access");
+			return;
+		}
+		else{
+			var collection = db.get().collection("ratings");
+			User.findById(req.payload._id).exec(function(err, user){
+				if(err){
+					res.status(500).send("Internal Error");
+					return;
+				}
+				else{
+					//console.log(user);
+					var rating = {sku: req.body.sku, rate: req.body.rate, comment: req.body.comment, userName: user.firstName + " " + user.lastName, userID: user._id, data: new Date(), title: req.body.title};
+					//console.log(rating);
+					collection.insert(rating, function(err, results){
+						if(err){res.status(500).send("Could not add Rating"); return;}
+						res.status(200).send("Rating Successfully Added!");
+					});
+				}
+			});
+		}
+	});
 
-
+	router.get('/allItemRatings', function(req, res){
+		var collection = db.get().collection("ratings");
+		collection.find({sku: req.query.sku}).toArray(function(err, docs){
+			if(err){res.status(500).send("Internal Error"); return;}
+			res.send(docs);
+		});
+	});
 
 
 	module.exports = router;/*

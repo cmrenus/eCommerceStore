@@ -10,6 +10,7 @@ orders: {
 	orderNum: int,
 	totalCost: float,
 	date: date,
+	status: string,
 	items: [{
 		sku: int,
 		price: float,
@@ -36,7 +37,7 @@ ratings: {
 	userID: id,
 	sku: int,
 	rate: int,
-	comments: string
+	comment: string
 }
 
 shoppingCart: {

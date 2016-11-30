@@ -19,9 +19,22 @@ app.controller("storeItemCtrl", ["$scope", "requests", '$routeParams','$window',
 		alert(err);
 	});
 
-	$scope.addToCart = function(sku){
+	requests.getItemRating($routeParams.sku).then(function(res){
+		$scope.itemRating = res.data.rating;
+	},
+	function(err){
+		console.log(err);
+	});
+
+	requests.getAllItemRatings($routeParams.sku).then(function(res){
+		$scope.reviews = res.data;
+	}, function(err){
+		console.log(err);
+	});
+
+	$scope.addToCart = function(sku, quantity){
 		console.log("in addToCart")
-		requests.addToCart(sku, 1).then(function(res){
+		requests.addToCart(sku, quantity).then(function(res){
 			console.log("request");
 			$window.location = '/#/cart';
 			$window.location.reload();
@@ -30,5 +43,16 @@ app.controller("storeItemCtrl", ["$scope", "requests", '$routeParams','$window',
 			console.log(err);
 		});
 	};
+
+	$scope.submitRating = function(newRating){
+		requests.addRating(newRating.comment, newRating.rate, $routeParams.sku, newRating.title).then(function(res){
+			console.log(res);
+			$scope.newRating = undefined;
+			alert(res.data);
+		},
+		function(err){
+			console.log(err);
+		})
+	}
 
 }]);

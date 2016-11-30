@@ -122,4 +122,38 @@ angular.module('ecommerce')
 			   	params: {orderNum: orderNum}
 			});
 		};
+
+		this.getItemRating = function(sku){
+			return $http({
+				method: 'GET',
+				url: '/getItemRating',
+				params: {sku: sku}
+			});
+		};
+
+		this.addRating = function(comment, rate, sku, title){
+			return $http({
+				method: 'POST',
+				url: '/addRating',
+				headers: {
+			    	Authorization: 'Bearer '+ Authentication.getToken()
+			    },
+			    data: {comment: comment, rate: rate, sku: sku, title: title}
+			});
+		};
+
+		this.getAllItemRatings = function(sku){
+			return $http({
+				method: 'GET',
+				url: '/allItemRatings',
+				params: {sku: sku}
+			});
+		};
+
+		this.clearCart = function(){
+			return $http({
+				method: "DELETE",
+				url: '/cartItems',
+			});
+		};
 }]);

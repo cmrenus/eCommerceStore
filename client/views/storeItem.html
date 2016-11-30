@@ -96,12 +96,16 @@ _________________________________________________________ -->
                             <form>
 
                                 <p class="price">{{item.price | currency}}</p>
-
+                                <p class="text-center center-block">
+                                    <input type="number" ng-init="quantity = 1" ng-model="quantity" style="width: 60px" class="form-control center-block">
+                                </p>
                                 <p class="text-center">
-                                    <button ng-click="addToCart(item.sku)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                                    <button ng-click="addToCart(item.sku, quantity)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></button>
                                 </p>
-
+                                <p class="text-center">
+                                    <span uib-rating ng-model="itemRating" max="5" read-only="true" on-leave="overStar = null"></span>
+                                </p>
                             </form>
                         </div>
 
@@ -139,6 +143,34 @@ _________________________________________________________ -->
                         <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
                         <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                    </p>
+                </div>
+                <div class="box">
+                    <h3>Rate this Product!</h3>
+                    <p>
+                        <span uib-rating ng-model="newRating.rate" max="5" read-only="false"></span>
+                    </p>
+                    <p>
+                        <div style="padding-left:0" class="col-sm-3">
+                            <input class="form-control" ng-model="newRating.title" placeholder="Comment Title"></span>
+                        </div>
+                        <textarea class="form-control" ng-model="newRating.comment" placeholder="Add a Comment!"></textarea>
+                    </p>
+                    <button class="btn btn-default" ng-click="submitRating(newRating)">Submit</button>
+                </div>
+
+                <div class="box">
+                    <h3>Product Reviews</h3>
+                    <p>
+
+                    <div ng-repeat="review in reviews">
+                        <p>
+                            <span uib-rating ng-model="review.rate" max="5" read-only="true"></span>
+                            <span class="strong">{{review.title}}</span>
+                        </p>
+                        <small>By {{review.userName}} on {{review.date | date: 'medium'}}</small>
+                        <p>{{review.comment}}</p>
+                    </div>
                     </p>
                 </div>
 <!--

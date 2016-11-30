@@ -46,4 +46,13 @@ app.controller("cartCtrl", ['$scope', 'requests', '$window', function($scope, re
 			console.log(err);
 		});
 	};
+
+	$scope.clearCart = function(){
+		requests.clearCart().then(function(res){
+			$window.location.reload();
+		},
+		function(err){
+			console.log(err);
+		});
+	};
 }]);
