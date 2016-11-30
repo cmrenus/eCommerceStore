@@ -156,4 +156,12 @@ angular.module('ecommerce')
 				url: '/cartItems',
 			});
 		};
+
+		this.getNewStoreItems = function(){
+			return $http({
+				method: "GET",
+				url: '/storeItems',
+				params: {sort: "date"}
+			});
+		};
 }]);

@@ -1,23 +1,91 @@
-<div>
+<div class="home-page">
     <!-- *** HOMEPAGE CAROUSEL ***
 _________________________________________________________ -->
-    <div >
+    <!--<div style="background-color: rgba(0,0,12,0.5); vertical-align: middle; height: 100%;">
         <div uib-carousel id="#myCarousel" active="0" interval="5000">
             <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id" ng-class="{'active': $index == 0}">
-                <!--<div class="carousel-wrapper">-->
-                <img ng-src="{{slide.image}}" style="width: 100%; margin:auto; background-color: green; opacity: .5"></div>
+                <img ng-src="{{slide.image}}" style="width: 100%; margin:auto; opacity: .5; background-color: green;">
+            </div>
                 <div class="carousel-caption">
                     <h4>Slide {{slide.id}}</h4>
                     <p>PARAGRAPHHHHHHHHHHHH</p>
                 </div>
             </div>
-            <!--<a class="left carousel-control ng-hide" data-target="#myCarousel" role="button" data-slide="prev"></a>
-            <a class="right carousel-control ng-hide" data-target="#myCarousel" role="button" data-slide="next"></a>-->
-            <!--
-            <ol class="carousel-indicators">
-                <li></li>
-                <li></li>
-            </ol>-->
+        </div>
+    </div>-->
+    <div class="home-wrapper">
+        <div class="site-wrapper-inner">
+            <div class="cover-container">
+                <div class="cover-info">
+                    <h1 class="cover-heading"><img src="../../resources/images/logo4.png"></h1>
+                    <p ng-hide="isLoggedIn()" class="lead">
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bar background-white">
+        <div class="container">
+            <div class="col-md-12">
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box-simple">
+                            <div class="icon">
+                                <i class="fa fa-lightbulb-o" style="line-height: 80px;"></i>
+                            </div>
+                            <h3>Custom Designs</h3>
+                            <p>Fifth abundantly made Give sixth hath. Cattle creature i be don't them behold green moved fowl Moved life us beast good yielding. Have bring.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box-simple">
+                            <div class="icon">
+                                <i class="fa fa-user" style="line-height: 80px;"></i>
+                            </div>
+                            <h3>UX</h3>
+                            <p>Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="box-simple">
+                            <div class="icon">
+                                <i class="fa fa-globe" style="line-height: 80px;"></i>
+                            </div>
+                            <h3>Quality Materials</h3>
+                            <p>Am terminated it excellence invitation projection as. She graceful shy believed distance use nay. Lively is people so basket ladies window expect.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bar backgroumd-white">
+        <div class="container">
+            <h3 class="text-center">Newly Added Products</h3>
+            <div ng-repeat="item in allItems" class="col-md-4 col-sm-6">
+                <div class="product">
+                    <div class="image">
+                        <a ng-href="/#/shop/{{item.sku}}">
+                            <img ng-src="{{item.images[0]}}" alt="" class="img-responsive image1">
+                        </a>
+                    </div>
+                    <!-- /.image -->
+                    <div class="text">
+                        <h3><a ng-href="/#/shop/{{item.sku}}">{{item.name}}</a></h3>
+                        <p class="price">{{item.price | currency}}</p>
+                        <p class="buttons">
+                            <a href="shop-detail.html" class="btn btn-default">View detail</a>
+                            <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                        </p>
+                    </div>
+                    <!-- /.text -->
+                </div>
+                <!-- /.product -->
+            </div>
         </div>
     </div>
     <!--

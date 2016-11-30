@@ -15,16 +15,27 @@ var auth = jwt({
 
 	router.get('/storeItems', function(req,res){
 		var query = {category: req.query.category};
-		if(req.query.category == "all"){
-			query = {};
-		}
 		var collection = db.get().collection('items');
-		collection.find(query).toArray(function(err, docs){
-			if(err){
-				res.status(400).json(err);
+		if(req.query.sort == "date"){
+			collection.find().sort({dateAdded: -1}).limit(3).toArray(function(err, docs){
+				if(err){
+					res.status(400).json(err);
+					return;
+				}
+				res.status(200).send(docs);
+			})
+		}
+		else{
+			if(req.query.category == "all"){
+				query = {};
 			}
-			res.status(200).json(docs);
-		});
+			collection.find(query).toArray(function(err, docs){
+				if(err){
+					res.status(400).json(err);
+				}
+				res.status(200).json(docs);
+			});
+		}
 	});
 
 	router.get('/categories', function(req, res){

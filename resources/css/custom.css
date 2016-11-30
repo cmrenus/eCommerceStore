@@ -1,3 +1,43 @@
 html, body{
 	height: 100%;
 }
+
+.home-page{
+  background: center no-repeat fixed url("../images/wood-planks.jpg");
+  background-size: cover;
+}
+
+.home-wrapper{
+	background-color: rgba(0,0,0,0.3);
+	vertical-align: middle;
+	height: 100vh;
+}
+
+/* Cover */
+.cover-heading {
+  margin-top: 0;
+	font-size: 5em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  color:white;
+}
+.cover-info{
+  text-align: center;
+}
+
+@media (max-width: 1115px) {
+	.cover-info{
+		padding-top: 10%;
+	}
+  .featurette-heading {
+    margin-top: 120px;
+  }
+  h1 img{
+    width: 80%;
+    padding-top: 0;
+  }
+}
