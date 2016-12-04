@@ -37,6 +37,7 @@ app.controller("cartCtrl", ['$scope', 'requests', '$window', function($scope, re
 	};
 
 	$scope.checkout = function(){
+		/*
 		requests.checkout().then(function(res){
 			console.log(res);
 			$window.location = '/#/completedPurchase';
@@ -44,7 +45,9 @@ app.controller("cartCtrl", ['$scope', 'requests', '$window', function($scope, re
 		},
 		function(err){
 			console.log(err);
-		});
+		}); */
+
+		$window.location = '/#/checkout';
 	};
 
 	$scope.clearCart = function(){

@@ -161,13 +161,22 @@ var auth = jwt({
 						console.log(finalTotal);
 						autoincrement.getNextSequence(db.get(), "orders", function(err, autoIndex){
 							console.log(req.payload);
-							var order = {totalCost: finalTotal, orderNum: autoIndex, date: new Date(), status: "Received", items: docs, cart: req.session.cart};
+							var address = {
+								street: req.body.user.street,
+								city: req.body.user.city,
+								zip: req.body.user.zip,
+								state: req.body.user.state,
+								coutry: req.body.user.country,
+								company: req.body.user.company,
+								name: req.body.user.firstName + req.body.user.lastName
+							};
+							var order = {totalCost: finalTotal, orderNum: autoIndex, date: new Date(), status: "Received", items: docs, cart: req.session.cart, shippingAddress: address, paymentMethod: req.body.payment, shippingMethod: req.body.shippingMethod};
 							if(!req.payload._id){
 								ordersCollection.insert(order, function(err, docs){
 									if(err){res.status(500).send("Could not complete order"); return;}
 									else{
 										req.session.cart = {};
-										res.status(200).send("Order has been sent");
+										res.status(200).send({data:"Order has been sent", orderNum: order.orderNum});
 									}
 								});
 							}
@@ -182,7 +191,9 @@ var auth = jwt({
 										if(err){res.status(500).send("Could not complete order"); return;}
 										else{
 											req.session.cart = {};
-											res.status(200).send("Order has been sent");
+											console.log(order.orderNum);
+
+											res.status(200).send({data:"Order has been sent", orderNum: order.orderNum});
 										}
 									});
 								});

@@ -48,6 +48,14 @@ app.config(["$routeProvider", function($routeProvider){
 	when('/contact', {
 		templateUrl: '/client/views/contact.html'
 	}).
+	when('/checkout', {
+		templateUrl: '/client/views/checkoutProcess.html',
+		controller: 'checkoutCtrl'
+	}).
+	when('/purchaseConfirmation', {
+		templateUrl: '/client/views/checkoutConfirmation.html',
+		controller: 'checkoutConfirmationCtrl'
+	}).
 	otherwise({
 		redirectTo: '/'
 	});

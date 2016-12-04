@@ -10,5 +10,6 @@ app.controller("userOrderCtrl", ["$scope", "requests", "$routeParams", function(
 	},
 	function(err){
 		console.log(err);
-	})
+	});
+	
 }]);

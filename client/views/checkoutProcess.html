@@ -1,0 +1,336 @@
+<div id="heading-breadcrumbs">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+                <h1>Checkout - Address</h1>
+            </div>
+            <div class="col-md-5">
+                <ul class="breadcrumb">
+                    <li><a href="index.html">Home</a>
+                    </li>
+                    <li>Checkout - Address</li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="content">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-9 clearfix">
+
+                <div class="box">
+                    <form>
+                        <!--
+                        <ul class="nav nav-pills nav-justified">
+                            <li class="active"><a href="#"><i class="fa fa-map-marker"></i><br>Address</a>
+                            </li>
+                            <li class="disabled"><a href="#"><i class="fa fa-truck"></i><br>Delivery Method</a>
+                            </li>
+                            <li class="disabled"><a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
+                            </li>
+                            <li class="disabled"><a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                            </li>
+                        </ul>-->
+                        <uib-tabset active="activeTab">
+                            <uib-tab index="0">
+                                <uib-tab-heading>
+                                    <i class="fa fa-map-marker"></i><br>Address
+                                </uib-tab-heading>
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="firstname">Firstname</label>
+                                                <input ng-model="user.firstName" type="text" class="form-control" id="firstname">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="lastname">Lastname</label>
+                                                <input ng-model="user.lastName" type="text" class="form-control" id="lastname">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="company">Company</label>
+                                                <input ng-model="user.company" type="text" class="form-control" id="company">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="street">Street</label>
+                                                <input ng-model="user.street" type="text" class="form-control" id="street">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+
+                                    <div class="row">
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="city">City</label>
+                                                <input ng-model="user.city" type="text" class="form-control" id="city">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="zip">ZIP</label>
+                                                <input ng-model="user.zip" type="text" class="form-control" id="zip">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="state">State</label>
+                                                <select ng-click="user.state" class="form-control" id="state"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-md-3">
+                                            <div class="form-group">
+                                                <label for="country">Country</label>
+                                                <select ng-model="user.country" class="form-control" id="country"></select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="phone">Telephone</label>
+                                                <input ng-model="user.telephone" type="text" class="form-control" id="phone">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input ng-model="user.email" type="text" class="form-control" id="email">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <!-- /.row -->
+                                </div>
+                            </uib-tab>
+                            <uib-tab index="1">
+                                <uib-tab-heading>
+                                    <i class="fa fa-truck"></i><br>Delivery Method
+                                </uib-tab-heading>
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="box shipping-method">
+
+                                                <h4>USPS Next Day</h4>
+
+                                                <p>Get it right on next day - fastest option possible.</p>
+
+                                                <div class="box-footer text-center">
+
+                                                    <input ng-model="check.shippingMethod" type="radio" name="delivery" value="delivery1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="box shipping-method">
+
+                                                <h4>USPS Next Day</h4>
+
+                                                <p>Get it right on next day - fastest option possible.</p>
+
+                                                <div class="box-footer text-center">
+
+                                                    <input type="radio" ng-model="check.shippingMethod" name="delivery" value="delivery2">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="box shipping-method">
+
+                                                <h4>USPS Next Day</h4>
+
+                                                <p>Get it right on next day - fastest option possible.</p>
+
+                                                <div class="box-footer text-center">
+
+                                                    <input type="radio" ng-model="check.shippingMethod" name="delivery" value="delivery3">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+
+                                </div>
+                                <!-- /.content -->
+                            </uib-tab>
+                            <uib-tab index="2">
+                                <uib-tab-heading>
+                                    <i class="fa fa-money"></i><br>Payment Method
+                                </uib-tab-heading>
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="box payment-method">
+
+                                                <h4>Paypal</h4>
+
+                                                <p>We like it all.</p>
+
+                                                <div class="box-footer text-center">
+
+                                                    <input type="radio" ng-model="check.payment" name="payment" value="paypal">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="box payment-method">
+
+                                                <h4>Payment gateway</h4>
+
+                                                <p>VISA and Mastercard only.</p>
+
+                                                <div class="box-footer text-center">
+
+                                                    <input type="radio" ng-model="check.payment" name="payment" value="credit card">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /.row -->
+
+                                </div>
+                                <!-- /.content -->
+                            </uib-tab>
+                            <uib-tab index="3">
+                                <uib-tab-heading>
+                                    <i class="fa fa-eye"></i><br>Order Review
+                                </uib-tab-heading>
+                                <div class="content">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">Product</th>
+                                                    <th>Quantity</th>
+                                                    <th>Unit price</th>
+                                                    <th>Discount</th>
+                                                    <th colspan="2">Total</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="item in cart">
+                                                    <td>
+                                                        <a href="#">
+                                                            <img width="50px" ng-src="{{item.images[0]}}" alt="{{item.name}}">
+                                                        </a>
+                                                    </td>
+                                                    <td><a href="#">{{item.name}}</a>
+                                                    </td>
+                                                    <td>
+                                                        <input style="width: 50px;" type="number" ng-model="quantities[item.sku].quantity" class="form-control">
+                                                    </td>
+                                                    <td>{{item.price | currency}}</td>
+                                                    <td>{{item.price * item.discount | currency}}</td>
+                                                    <td ng-init="costs[$index] = (item.price - (item.price * item.discount)) * quantities[item.sku].quantity; cost.total = cost.total + costs[$index]">{{ costs[$index] | currency}}</td>
+                                                    <td><a ng-href="" ng-click="removeItem($index)"><i class="fa fa-trash-o"></i></a>
+                                                    </td>
+                                                </tr>
+                                                <!--<tr>
+                                                    <td>
+                                                        <a href="#">
+                                                            <img src="img/detailsquare.jpg" alt="White Blouse Armani">
+                                                        </a>
+                                                    </td>
+                                                    <td><a href="#">White Blouse Armani</a>
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" value="2" class="form-control">
+                                                    </td>
+                                                    <td>$123.00</td>
+                                                    <td>$0.00</td>
+                                                    <td>$246.00</td>
+                                                    <td><a href="#"><i class="fa fa-trash-o"></i></a>
+                                                    </td>
+                                                </tr>-->
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="5">Total</th>
+                                                    <th colspan="2">{{cost.total | currency}}</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+
+                                    </div>
+                                    <!-- /.table-responsive -->
+                                </div>
+                                <!-- /.content -->
+                            </uib-tab>
+                        </uib-tabset>
+                        <div class="box-footer">
+                            <div class="pull-left">
+                                <a href="/#/cart" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to Cart</a>
+                            </div>
+                            <div class="pull-right">
+                                <button ng-hide="activeTab >= 3" ng-click="activeTab = activeTab + 1" class="btn btn-template-main">Continue<i class="fa fa-chevron-right"></i>
+                                </button>
+                                <button ng-show="activeTab == 3" ng-click="checkout()" class="btn btn-template-main">Purchase<i class="fa fa-chevron-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box -->
+
+
+            </div>
+            <!-- /.col-md-9 -->
+
+            <div class="col-md-3">
+                <div class="box" id="order-summary">
+                    <div class="box-header">
+                        <h3>Order summary</h3>
+                    </div>
+                    <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Order subtotal</td>
+                                    <th>{{cost.total | currency}}</th>
+                                </tr>
+                                <tr>
+                                    <td>Shipping and handling</td>
+                                    <th>$10.00</th>
+                                </tr>
+                                <tr>
+                                    <td>Tax</td>
+                                    <th>$0.00</th>
+                                </tr>
+                                <tr class="total">
+                                    <td>Total</td>
+                                    <th>{{cost.total + 10 | currency}}</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.col-md-3 -->
+
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->

@@ -92,13 +92,18 @@ angular.module('ecommerce')
 			});
 		};
 
-		this.checkout = function(){
+		this.checkout = function(user, check){
 			return $http({
 				method: 'POST',
 				url: '/checkout',
 				headers: {
 			    	Authorization: 'Bearer '+ Authentication.getToken()
-			    }
+			    },
+			    data:{
+			    	user: user,
+			    	paymentMethod: check.payment,
+			    	shippingMethod: check.shippingMethod
+			    } 
 			});
 		};
 
