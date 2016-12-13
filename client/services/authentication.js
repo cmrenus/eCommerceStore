@@ -1,17 +1,22 @@
+//service for authentication
 angular.module('ecommerce').
 service('Authentication', ['$http', '$window', function($http, $window){
+	//save JWT within local storage
 	var saveToken = function(token){
 		$window.localStorage['userToken'] = token;
 	};
 
+	//retrieve the JWT token
 	var getToken = function(){
 		return $window.localStorage['userToken'];
 	}
 
+	//remove the JWT token
 	logout = function(){
 		$window.localStorage.removeItem('userToken');
 	};
 
+	//check if user is logged in based on the expiration in JWT
 	var isLoggedIn = function(){
 		var token = getToken();
 		var payload;
@@ -27,6 +32,7 @@ service('Authentication', ['$http', '$window', function($http, $window){
 		}
 	};
 
+	//if user is logget in, retrieve their information from the JWT
 	var currentUser = function(){
 		if(isLoggedIn()){
 			var token = getToken();

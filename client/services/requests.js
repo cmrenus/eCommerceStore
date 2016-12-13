@@ -1,5 +1,7 @@
+//service for all REST endpoints
 angular.module('ecommerce')
 .service('requests', ['$http', 'Authentication', function($http, Authentication){
+		//login. takes user.username and user.password
 		this.login = function(user){
 			return $http({
 				method: 'POST',
@@ -8,6 +10,7 @@ angular.module('ecommerce')
 			});
 		};
 
+		//register. takes {user: String, password: String}
 		this.register = function(user){
 			return $http({
 				method: 'POST',
@@ -16,6 +19,8 @@ angular.module('ecommerce')
 			});
 		};
 
+		//get all items from in store
+		//take Object {pageNum: Number, category: String}
 		this.getAllItems = function(params){
 			return $http({
 				method: 'GET',
@@ -24,6 +29,7 @@ angular.module('ecommerce')
 			});
 		};
 
+		//get all categories for items
 		this.getCategories = function(){
 			return $http({
 				method: 'GET',
@@ -31,6 +37,8 @@ angular.module('ecommerce')
 			});
 		};
 
+		//get the details for a specific item
+		//takes an items sku
 		this.getItemDetails = function(sku){
 			return $http({
 				method: 'GET',
@@ -39,6 +47,8 @@ angular.module('ecommerce')
 			});
 		};
 
+		//add an item to a users cart
+		//takes an items sku, as well as a quantity for that item
 		this.addToCart = function(sku, quantity){
 			return $http({
 				method: 'POST',
@@ -47,6 +57,8 @@ angular.module('ecommerce')
 			});
 		}
 
+		//retrieve all items within a users cart
+		//this is based off of session variable
 		this.getCartItems = function(){
 			return $http({
 				method: 'GET',
@@ -54,6 +66,8 @@ angular.module('ecommerce')
 			});
 		};
 
+		//remove an item from the cart
+		//takes an items sku
 		this.removeCartItem = function(sku){
 			return $http({
 				method: 'DELETE',
@@ -62,6 +76,8 @@ angular.module('ecommerce')
 			});
 		};
 
+		//update the items within a cart
+		//takes cart information to know how to update quantities
 		this.updateCart = function(data){
 			return $http({
 				method: 'PUT',
@@ -70,6 +86,9 @@ angular.module('ecommerce')
 			});
 		};
 
+		//change a users password
+		//takes object{old: String, new: String, retype: String}
+		//uses JWT in order to authenticate user
 		this.changePassword = function(passwords){
 			return $http({
 				method: 'PUT',
@@ -81,6 +100,9 @@ angular.module('ecommerce')
 			});
 		};
 
+		//saves shipping information for a user
+		//takes object of shipping information
+		//uses JWT to authenticate the user
 		this.saveUserInfo = function(user){
 			return $http({
 				method: 'PUT',
@@ -92,6 +114,9 @@ angular.module('ecommerce')
 			});
 		};
 
+		//checkout and purchase items in cart
+		//takes user information, and object{payment: String, shippingMethod: String}
+		//uses Authentication to pass back whether the user is logged in or not to associate a userId with the orders
 		this.checkout = function(user, check){
 			return $http({
 				method: 'POST',
@@ -107,6 +132,8 @@ angular.module('ecommerce')
 			});
 		};
 
+		//get a users orders
+		//uses authentication so only user can access
 		this.getOrders = function(){
 			return $http({
 				method: 'GET',
@@ -117,6 +144,9 @@ angular.module('ecommerce')
 			});
 		};
 
+		//get information for a specific order
+		//takes a Number, order number
+		//Uses authentication so only user can access
 		this.getOrder = function(orderNum){
 			return $http({
 				method: 'GET',
@@ -128,6 +158,8 @@ angular.module('ecommerce')
 			});
 		};
 
+		//get the average rating for a specific item
+		//takes the sku of an item
 		this.getItemRating = function(sku){
 			return $http({
 				method: 'GET',
@@ -136,6 +168,9 @@ angular.module('ecommerce')
 			});
 		};
 
+		//add a arating to an item
+		//takes String comment, Number rating, String sku, and String title
+		//uses authentication as only logged in users can leave ratings
 		this.addRating = function(comment, rate, sku, title){
 			return $http({
 				method: 'POST',
@@ -147,6 +182,8 @@ angular.module('ecommerce')
 			});
 		};
 
+		//get all ratings for an item
+		//takes and items SKU
 		this.getAllItemRatings = function(sku){
 			return $http({
 				method: 'GET',
@@ -155,6 +192,7 @@ angular.module('ecommerce')
 			});
 		};
 
+		//delete all items from a cart
 		this.clearCart = function(){
 			return $http({
 				method: "DELETE",
@@ -162,6 +200,7 @@ angular.module('ecommerce')
 			});
 		};
 
+		//get the newest store items. 
 		this.getNewStoreItems = function(){
 			return $http({
 				method: "GET",

@@ -5,12 +5,13 @@ var passport = require('passport'),
 
 
 passport.use(new LocalStrategy({ usernameField: 'email'}, function(username, password, done){
+	//check if user exists
 	User.findOne({email:username}, function(err, user){
 		if(err) {return done(err);}
-		else if(!user){
+		else if(!user){//if no user
 			return done(null, false, {message: "Incorrect credentials"});
 		}
-		else if(!user.validatePassword(password)){
+		else if(!user.validatePassword(password)){//if incorrect password
 			return done(null, false, {message: "Incorrect credentials"});
 		}
 		return done(null, user);

@@ -1,25 +1,23 @@
 <div class="container">
+    <!-- if cart is empty -->
     <div ng-if="empty" class="row">
         <div class="text-center container">
             <h3>Your cart is empty!</h3>
         </div>
     </div>
+    <!-- if cart is not empty -->
     <div ng-if="!empty" class="row">
         <div class="col-md-12">
             <p class="text-muted lead">You currently have {{cart.length}} item(s) in your cart. <a href="" ng-click="clearCart()">Clear Cart</a></p>
         </div>
-
-
         <div class="col-md-9 clearfix" id="basket">
 
             <div class="box">
-
                 <form>
-
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
-                                <tr>
+                                <tr><!--headers for items in cart-->
                                     <th colspan="2">Product</th>
                                     <th>Quantity</th>
                                     <th>Unit price</th>
@@ -28,43 +26,33 @@
                                 </tr>
                             </thead>
                             <tbody ng-init="totalCost = 0">
+                                <!--repeat all items in cart array -->
                                 <tr ng-repeat="item in cart">
-                                    <td>
+                                    <td><!--item image-->
                                         <a href="#">
                                             <img ng-src="{{item.images[0]}}" alt="{{item.name}}">
                                         </a>
                                     </td>
-                                    <td><a href="#">{{item.name}}</a>
+                                    <td><!-- item name -->
+                                        <a href="#">{{item.name}}</a>
                                     </td>
-                                    <td>
+                                    <td><!--item quantity --> 
                                         <input type="number" ng-model="quantities[item.sku].quantity" class="form-control">
                                     </td>
-                                    <td>{{item.price | currency}}</td>
-                                    <td>{{item.price * item.discount | currency}}</td>
+                                    <td><!-- item price -->
+                                        {{item.price | currency}}
+                                    </td>
+                                    <td><!-- discount -->
+                                        {{item.price * item.discount | currency}}
+                                    </td>
+                                    <!--total cost for item -->
                                     <td ng-init="costs[$index] = (item.price - (item.price * item.discount)) * quantities[item.sku].quantity; $parent.totalCost = $parent.totalCost + costs[$index]">{{ costs[$index] | currency}}</td>
                                     <td><a ng-href="" ng-click="removeItem($index)"><i class="fa fa-trash-o"></i></a>
                                     </td>
                                 </tr>
-                                <!--<tr>
-                                    <td>
-                                        <a href="#">
-                                            <img src="img/detailsquare.jpg" alt="White Blouse Armani">
-                                        </a>
-                                    </td>
-                                    <td><a href="#">White Blouse Armani</a>
-                                    </td>
-                                    <td>
-                                        <input type="number" value="2" class="form-control">
-                                    </td>
-                                    <td>$123.00</td>
-                                    <td>$0.00</td>
-                                    <td>$246.00</td>
-                                    <td><a href="#"><i class="fa fa-trash-o"></i></a>
-                                    </td>
-                                </tr>-->
                             </tbody>
                             <tfoot>
-                                <tr>
+                                <tr><!-- total cost of cart -->
                                     <th colspan="5">Total</th>
                                     <th colspan="2">{{totalCost | currency}}</th>
                                 </tr>
@@ -73,13 +61,16 @@
 
                     </div>
                     <!-- /.table-responsive -->
-
+                    
                     <div class="box-footer">
+                        <!-- continue shopping button -->
                         <div class="pull-left">
-                            <a href="shop-category.html" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
+                            <a href="/#/shop" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
                         </div>
                         <div class="pull-right">
+                            <!-- update cart -->
                             <button ng-click="updateCart()" class="btn btn-default"><i class="fa fa-refresh"></i> Update cart</button>
+                            <!-- checkout button -->
                             <button ng-click="checkout()" class="btn btn-template-main">Proceed to checkout <i class="fa fa-chevron-right"></i>
                             </button>
                         </div>
@@ -91,14 +82,15 @@
             <!-- /.box -->
         </div>
         <!-- /.col-md-9 -->
-
+    
+        <!-- right side box -->
         <div class="col-md-3">
             <div class="box" id="order-summary">
                 <div class="box-header">
                     <h3>Order summary</h3>
                 </div>
                 <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
-
+                <!-- show all costs -->
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
@@ -124,7 +116,7 @@
 
             </div>
 
-
+            <!-- coupon code section -->
             <div class="box">
                 <div class="box-header">
                     <h4>Coupon code</h4>

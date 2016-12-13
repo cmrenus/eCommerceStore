@@ -1,15 +1,15 @@
 var app = angular.module("ecommerce");
 
+//controller for an order
 app.controller("userOrderCtrl", ["$scope", "requests", "$routeParams", function($scope, requests, $routeParams){
-	
 	$scope.order = {};
-	console.log($routeParams.orderNum);
+	//get information for this order
 	requests.getOrder($routeParams.orderNum).then(function(res){
-		console.log(res);
 		$scope.order = res.data;
+		$scope.address = res.data.shippingAddress;
 	},
 	function(err){
-		console.log(err);
+		swal("Error", err, "error")
 	});
-	
+
 }]);

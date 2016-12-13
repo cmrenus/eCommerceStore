@@ -2,6 +2,7 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="resources/css/font-awesome.css">
 	<link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/sweetalert/dist/sweetalert.css">
 
 	<link rel="stylesheet" type="text/css" href="resources/css/style.green.css">
 	<link rel="stylesheet" type="text/css" href="resources/css/custom.css">
@@ -9,35 +10,8 @@
 
 <body ng-app="ecommerce">
     <div id="all">
+        <!-- nav bar-->
 	    <header ng-controller="indexCtrl">
-	    <!-- *** TOP ***_________________________________________________________ -->
-	        <!--<div id="top">
-	            <div class="container">
-	                <div class="row">
-	                    <div class="col-xs-5 contact">
-	                        <p class="hidden-sm hidden-xs">Contact us on +420 777 555 333 or hello@universal.com.</p>
-	                        <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-	                        </p>
-	                    </div>
-	                    <div class="col-xs-7">
-	                        <div class="social">
-	                            <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-	                            <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
-	                            <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
-	                            <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-	                        </div>
-
-	                        <div class="login">
-	                            <a href="#" data-toggle="modal" data-target="#login-modal"><i class="fa fa-sign-in"></i> <span class="hidden-xs text-uppercase">Sign in</span></a>
-	                            <a href="customer-register.html"><i class="fa fa-user"></i> <span class="hidden-xs text-uppercase">Sign up</span></a>
-	                        </div>
-
-	                    </div>
-	                </div>
-	            </div>
-	        </div>-->
-
-	        <!-- *** TOP END *** -->
 
 	    	<!-- *** NAVBAR ***
     _________________________________________________________ -->
@@ -48,11 +22,12 @@
 
                     <div class="container">
                         <div class="navbar-header">
-
+                            <!-- logo -->
                             <a class="navbar-brand home" href="/#/">
                                 <img src="resources/images/logoSmall.png" alt="Universal logo" class="hidden-xs hidden-sm">
                                 <img src="resources/images/logoSmall2.png" alt="Universal logo" class="visible-xs visible-sm"><span class="sr-only">Universal - go to homepage</span>
                             </a>
+                            <!-- collapsed button -->
                             <div class="navbar-buttons">
                                 <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
                                     <span class="sr-only">Toggle navigation</span>
@@ -63,7 +38,7 @@
                         <!--/.navbar-header -->
 
                         <div class="navbar-collapse collapse" id="navigation">
-
+                            <!-- navigation tabs -->
                             <ul class="nav navbar-nav navbar-right">
                                 <li ng-class="{active: isActive('/')}">
                                     <a href="/#/">Home</a>
@@ -79,30 +54,12 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <!--<li class="dropdown use-yamm yamm-fw">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Features<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <div class="yamm-content">
-                                                <div class="row">
-                                                    <h5>Shortcodes</h5>
-                                                    <ul>
-                                                        <li><a href="template-accordions.html">Accordions</a>
-                                                        </li>
-                                                        <li><a href="template-alerts.html">Alerts</a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>-->
 
                                 <li ng-class="{active: isActive('/contact')}">
                                     <a href="/#/contact">Contact</a>
                                 </li>
-                                <li ng-class="{active: isActive('/login')}" ng-show="!isLoggedIn">
-			                        <a href="/#/login"><i class="fa fa-sign-in"></i><span>Sign in</span></a>
+                                <li  ng-class="{active: isActive('/login')}" ng-show="!isLoggedIn" ng-mouseover="popover.open = true;">
+			                        <a uib-popover-html="registrationTooltip" popover-trigger="'outsideClick'" popover-is-open="popover.open" popover-placement="bottom" href="/#/login"><i class="fa fa-sign-in"></i><span>Sign in</span></a>
 	                            </li>
 	                            <li ng-class="{active: isActive('/userAccount') || isActive('/myOrders')}" class="dropdown" ng-show="isLoggedIn">
 									<a href="javascript: void(0)" class="dropdown-toggle" data-toggle="dropdown">{{user.firstName}}<b class="caret"></b></a>
@@ -201,51 +158,6 @@ _________________________________________________________ -->
                     <hr class="hidden-md hidden-lg hidden-sm">
 
                 </div>
-                <!-- /.col-md-3 -->
-                <!--
-                <div class="col-md-3 col-sm-6">
-
-                    <h4>Blog</h4>
-
-                    <div class="blog-entries">
-                        <div class="item same-height-row clearfix">
-                            <div class="image same-height-always">
-                                <a href="#">
-                                    <img class="img-responsive" src="img/detailsquare.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="name same-height-always">
-                                <h5><a href="#">Blog post name</a></h5>
-                            </div>
-                        </div>
-
-                        <div class="item same-height-row clearfix">
-                            <div class="image same-height-always">
-                                <a href="#">
-                                    <img class="img-responsive" src="img/detailsquare.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="name same-height-always">
-                                <h5><a href="#">Blog post name</a></h5>
-                            </div>
-                        </div>
-
-                        <div class="item same-height-row clearfix">
-                            <div class="image same-height-always">
-                                <a href="#">
-                                    <img class="img-responsive" src="img/detailsquare.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="name same-height-always">
-                                <h5><a href="#">Very very long blog post name</a></h5>
-                            </div>
-                        </div>
-                    </div>
-
-                    <hr class="hidden-md hidden-lg">
-
-                </div>-->
-                <!-- /.col-md-3 -->
 
                 <div class="col-md-3 col-sm-6">
 
@@ -265,48 +177,6 @@ _________________________________________________________ -->
                     <hr class="hidden-md hidden-lg hidden-sm">
 
                 </div>
-                <!-- /.col-md-3 -->
-
-
-
-               <!-- <div class="col-md-3 col-sm-6">
-
-                    <h4>Photostream</h4>
-
-                    <div class="photostream">
-                        <div>
-                            <a href="#">
-                                <img src="img/detailsquare.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="img/detailsquare2.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="img/detailsquare3.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="img/detailsquare3.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="img/detailsquare2.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                        <div>
-                            <a href="#">
-                                <img src="img/detailsquare.jpg" class="img-responsive" alt="#">
-                            </a>
-                        </div>
-                    </div>
-
-                </div>-->
                 <!-- /.col-md-3 -->
             </div>
             <!-- /.container -->
@@ -336,12 +206,12 @@ _________________________________________________________ -->
 	</div>
 </body>
 <script type="text/javascript" src="resources/js/jquery-1.11.0.min.js"></script>
-<!--<script type="text/javascript" src="resources/js/front.js"></script>-->
 <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
 <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
-<!--<script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>-->
 <script type="text/javascript" src="node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+<script src="node_modules/sweetalert/dist/sweetalert.min.js"></script>
+
 
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="client/services/requests.js"></script>

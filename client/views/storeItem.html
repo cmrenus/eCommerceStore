@@ -1,3 +1,4 @@
+<!-- page header and breadcrumbs -->
 <div id="heading-breadcrumbs">
     <div class="container">
         <div class="row">
@@ -43,16 +44,6 @@ _________________________________________________________ -->
                             </li>
                             <li ng-class="{active: item.category === category}" ng-repeat="category in categories">
                                 <a ng-href="/#/shop?category={{category}}&page=1">{{category}}  <span class="badge pull-right">123</span></a>
-                                <!--<ul>
-                                    <li><a href="shop-category.html">T-shirts</a>
-                                    </li>
-                                    <li><a href="shop-category.html">Skirts</a>
-                                    </li>
-                                    <li><a href="shop-category.html">Pants</a>
-                                    </li>
-                                    <li><a href="shop-category.html">Accessories</a>
-                                    </li>
-                                </ul>-->
                             </li>
 
                         </ul>
@@ -74,41 +65,34 @@ _________________________________________________________ -->
 
                 <div class="row" id="productMain">
                     <div class="col-sm-6">
+                        <!-- main image for item -->
                         <div id="mainImage">
                             <img ng-src="{{item.images[0]}}" alt="" class="img-responsive">
                         </div>
 
-                        <!--<div class="ribbon sale">
-                            <div class="theribbon">SALE</div>
-                            <div class="ribbon-background"></div>
-                        </div>
-                        
-                        <div class="ribbon new">
-                            <div class="theribbon">NEW</div>
-                            <div class="ribbon-background"></div>
-                        </div>
-                        -->
-
                     </div>
                     <div class="col-sm-6">
                         <div class="box">
-
                             <form>
-
+                                <!-- price -->
                                 <p class="price">{{item.price | currency}}</p>
+                                <!-- item quantity -->
                                 <p class="text-center center-block">
                                     <input type="number" ng-init="quantity = 1" ng-model="quantity" style="width: 60px" class="form-control center-block">
                                 </p>
+                                <!-- add to cart button -->
                                 <p class="text-center">
                                     <button ng-click="addToCart(item.sku, quantity)" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i> Add to cart</button>
                                     <button class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Add to wishlist"><i class="fa fa-heart-o"></i></button>
                                 </p>
+                                <!-- item rating -->
                                 <p class="text-center">
                                     <span uib-rating ng-model="itemRating" max="5" read-only="true" on-leave="overStar = null"></span>
                                 </p>
                             </form>
                         </div>
-
+                        
+                        <!-- additional images -->
                         <div class="row" id="thumbs">
                             <div ng-repeat="image in item.images" class="col-xs-4">
                                 <a ng-href="{{image}}" class="thumb">
@@ -119,8 +103,8 @@ _________________________________________________________ -->
                     </div>
 
                 </div>
-
-
+            
+                <!-- item information area -->
                 <div class="box" id="details">
                     <p>
                         <h4>Product details</h4>
@@ -135,7 +119,8 @@ _________________________________________________________ -->
                             <li>One size fits all</li>
                         </ul>
                 </div>
-
+                
+                <!-- social media section -->
                 <div class="box social" id="product-social">
                     <h4>Show it to your friends</h4>
                     <p>
@@ -144,7 +129,9 @@ _________________________________________________________ -->
                         <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
                         <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
                     </p>
-                </div>
+                </div>  
+
+                <!--rate product section -->
                 <div class="box">
                     <h3>Rate this Product!</h3>
                     <p>
@@ -158,7 +145,8 @@ _________________________________________________________ -->
                     </p>
                     <button class="btn btn-default" ng-click="submitRating(newRating)">Submit</button>
                 </div>
-
+                
+                <!-- all product ratings -->
                 <div class="box">
                     <h3>Product Reviews</h3>
                     <p>
@@ -173,31 +161,6 @@ _________________________________________________________ -->
                     </div>
                     </p>
                 </div>
-<!--
-                <div class="row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="box text-uppercase">
-                            <h3>Products viewed recently</h3>
-                        </div>
-                    </div>
-
-
-                    <div class="col-md-3 col-sm-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="#">
-                                    <img src="img/product3.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <div class="text">
-                                <h3>Fur coat</h3>
-                                <p class="price">$143</p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>-->
-
             </div>
             <!-- /.col-md-9 -->
 

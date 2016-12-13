@@ -2,7 +2,7 @@ var mongoose = require("mongoose"),
     crypto = require('crypto'),
     jwt = require("jsonwebtoken");
 
-
+//schema for users collection
 var userSchema = new mongoose.Schema({
   email: {
     type: String,
@@ -20,7 +20,7 @@ var userSchema = new mongoose.Schema({
   company: {
     type: String
   },
-  stree: {
+  street: {
     type: String
   },
   city: {
@@ -42,16 +42,19 @@ var userSchema = new mongoose.Schema({
   salt: String
 });
 
+//create password for user
 userSchema.methods.createPassword = function(password){
   this.salt = crypto.randomBytes(16).toString('hex');
   this.hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
 };
 
+//validate a users password
 userSchema.methods.validatePassword = function(password) {
   var hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
   return this.hash === hash;
 };
 
+//create JWT for user when logging in
 userSchema.methods.generateJwt = function() {
   var expiry = new Date();
   expiry.setDate(expiry.getDate() + 7);

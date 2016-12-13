@@ -1,4 +1,5 @@
- <div id="heading-breadcrumbs">
+<!-- page header and breadcrumbs -->
+<div id="heading-breadcrumbs">
     <div class="container">
         <div class="row">
             <div class="col-md-7">
@@ -28,10 +29,10 @@
 	 _________________________________________________________ -->
 
             <div class="col-md-9 clearfix" id="customer-order">
-
+                <!-- date of order -->
                 <p class="lead">Order #{{order.orderNum}} was placed on <strong>{{order.date | date: "MM/d/yyyy"}}</strong> and is currently <strong>Being prepared</strong>.</p>
-                <p class="lead text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
-
+                <p class="lead text-muted">If you have any questions, please feel free to <a href="/#/contact">contact us</a>, our customer service center is working for you 24/7.</p>
+                <!-- items information within order -->
                 <div class="box">
                     <div class="table-responsive">
                         <table class="table">
@@ -84,22 +85,11 @@
 
                     <div class="row addresses">
                         <div class="col-sm-6">
-                            <h3 class="text-uppercase">Invoice address</h3>
-                            <p>John Brown
-                                <br>13/25 New Avenue
-                                <br>New Heaven
-                                <br>45Y 73J
-                                <br>England
-                                <br>Great Britain</p>
-                        </div>
-                        <div class="col-sm-6">
                             <h3 class="text-uppercase">Shipping address</h3>
-                            <p>John Brown
-                                <br>13/25 New Avenue
-                                <br>New Heaven
-                                <br>45Y 73J
-                                <br>England
-                                <br>Great Britain</p>
+                            <p>{{address.name}}
+                                <br>{{address.street}}
+                                <br>{{address.city}}, {{address.state}} {{address.zip}}
+                                <br>{{address.country}}</p>
                         </div>
                     </div>
                     <!-- /.addresses -->
@@ -123,7 +113,7 @@ _________________________________________________________ -->
                     <div class="panel-heading">
                         <h3 class="panel-title">Customer section</h3>
                     </div>
-
+                    <!-- right hand area with all user specific actions -->
                     <div class="panel-body">
 
                         <ul class="nav nav-pills nav-stacked">

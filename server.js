@@ -1,7 +1,6 @@
 var express = require('express'),
 	serverPort = 8000,
 	path = require('path'),
-	//session = require('express-session'),
 	cookieParser = require('cookie-parser'),
 	bodyParser = require('body-parser'),
   passport = require('passport'),
@@ -19,8 +18,10 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
+//db uri
 var dbURI='mongodb://localhost:27017/maskMakers';
 var mongoosedb = require('mongoose').connect(dbURI);
+//create sessionStore
 var sessionStore = new MongoDBStore({
   uri: dbURI,
   collection: 'mySessions'
@@ -33,10 +34,10 @@ sessionStore.on('error', function(error) {
 
 require('./server/models/user');
 require('./server/config/strategy')
-
 var routes = require('./server/routes/index');
 var authentication = require('./server/routes/authentication');
 var items = require('./server/routes/storeItems');
+
 //middlewares
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -48,6 +49,7 @@ app.use(passport.initialize());
 //static file usage
 app.use('/', express.static(path.join(__dirname, '/')));
 
+//set session information
 app.use(session({
     secret: 'super secret key',
     store: sessionStore,
@@ -58,33 +60,22 @@ app.use(session({
     saveUninitialized: true
 }));
 
+//routes
 app.use('/', routes);
-
-
-/*
-app.use(function(req, res, next){
-  console.log(req.session);
-  console.log(req.session.id);
-  console.log(req.cookies);
-  next();
-});
-*/
 app.use('/login', authentication.login);
 app.use('/register', authentication.register);
 app.use('/changePassword', auth, authentication.changePassword);
 app.use('/saveUserInfo', auth, authentication.saveUserInfo);
-/*app.use('/storeItems', items.getStoreItems);
-app.use('/categories', items.getCategories);
-app.use('/storeItem', items.getStoreItemDetails);
-app.use('/addToCart', items.addToCart);*/
 app.use('/', items);
 
+//connect to db
 db.connect(dbURI, function(err) {
   if (err) {
     console.log('Unable to connect to Mongo.')
     console.log(err);
     process.exit(1)
   } else {
+    //connect server to port
     app.listen(serverPort, function() {
       console.log('Server running on port ' + serverPort + '.')
     })

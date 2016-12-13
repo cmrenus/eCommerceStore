@@ -1,6 +1,8 @@
 var app = angular.module("ecommerce", ["ngRoute", "ui.bootstrap"]);
 
-app.config(["$routeProvider", function($routeProvider){
+app.config(["$routeProvider", "$uibTooltipProvider", function($routeProvider, $uibTooltipProvider){
+	//routing configuration for application
+	//places controller to a view and specifies the route, can also declare whether a route should be restricted
 	$routeProvider.
 	when('/', {
 		templateUrl: "client/views/home.html",
@@ -62,10 +64,13 @@ app.config(["$routeProvider", function($routeProvider){
 }]);
 
 app.run(['$rootScope', '$location', '$route', 'Authentication', function($rootScope, $location, $route, Authentication){
+
 	$rootScope.$on("$routeChangeStart", function(event, next, current){
+		//if a route is restricted and user is not logged in, redirect them
 		if(next.$$route != undefined && next.$$route.restricted == true && !Authentication.isLoggedIn()){
 			$location.path('/');
 		}
+		//if logged in, should not be able to access login or register page
 		if((next.$$route.originalPath === '/login' || next.$$route.originalPath === '/register') && Authentication.isLoggedIn()){
 			$location.path('/');
 		}

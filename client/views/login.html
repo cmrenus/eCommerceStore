@@ -1,28 +1,32 @@
+<div class="modal-dialog modal-sm">
 
-    <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+        <!-- header -->
+        <div class="modal-header">
+            <h4 class="modal-title" id="Login">Customer login</h4>
+        </div>
+        <!-- content -->
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="email_modal" placeholder="email" ng-model="user.email">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password_modal" placeholder="password" ng-model="user.password">
+                </div>
+                <!-- failed login alert -->
+                <div class="alert alert-danger" ng-show="failedLogin" role="alert">Incorrect Credentials entered!</div>
+                <!-- login button -->
+                <p class="text-center">
+                    <button class="btn btn-template-main" ng-click="login(user)"><i class="fa fa-sign-in"></i> Log in</button>
+                </p>
 
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="Login">Customer login</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="email_modal" placeholder="email" ng-model="user.email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="password_modal" placeholder="password" ng-model="user.password">
-                    </div>
-                    <div class="alert alert-danger" ng-show="failedLogin" role="alert">Incorrect Credentials entered!</div>
-                    <p class="text-center">
-                        <button class="btn btn-template-main" ng-click="login(user)"><i class="fa fa-sign-in"></i> Log in</button>
-                    </p>
+            </form>
+            
+            <!-- register section -->
+            <p class="text-center text-muted">Not registered yet?</p>
+            <p class="text-center text-muted"><a href="/#/register"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
 
-                </form>
-
-                <p class="text-center text-muted">Not registered yet?</p>
-                <p class="text-center text-muted"><a href="/#/register"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
-
-            </div>
         </div>
     </div>
+</div>

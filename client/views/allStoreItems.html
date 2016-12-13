@@ -1,3 +1,5 @@
+
+<!--Page Header and bread crumbs -->
 <div id="heading-breadcrumbs">
     <div class="container">
         <div class="row">
@@ -41,16 +43,6 @@ _________________________________________________________ -->
                             </li>
                             <li ng-class="{active: isActive(category)}" ng-repeat="category in categories">
                                 <a ng-href="/#/shop?category={{category}}&page=1">{{category}}  <span class="badge pull-right">123</span></a>
-                                <!--<ul>
-                                    <li><a href="shop-category.html">T-shirts</a>
-                                    </li>
-                                    <li><a href="shop-category.html">Skirts</a>
-                                    </li>
-                                    <li><a href="shop-category.html">Pants</a>
-                                    </li>
-                                    <li><a href="shop-category.html">Accessories</a>
-                                    </li>
-                                </ul>-->
                             </li>
 
                         </ul>
@@ -70,10 +62,8 @@ _________________________________________________________ -->
 
             <div class="col-sm-9">
 
-                <p class="text-muted lead">In our Ladies department we offer wide selection of the best products we have found and carefully selected worldwide. Pellentesque habitant morbi tristique senectus et netuss.</p>
-
                 <div class="row products">
-
+                    <!--Repeat all items-->
                     <div ng-repeat="item in allItems" class="col-md-4 col-sm-6">
                         <div class="product">
                             <div class="image">
@@ -85,66 +75,19 @@ _________________________________________________________ -->
                             <div class="text">
                                 <h3><a ng-href="/#/shop/{{item.sku}}">{{item.name}}</a></h3>
                                 <p class="price">{{item.price | currency}}</p>
-                                <p class="buttons">
-                                    <a href="shop-detail.html" class="btn btn-default">View detail</a>
-                                    <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </p>
                             </div>
                             <!-- /.text -->
                         </div>
                         <!-- /.product -->
                     </div>
-                    <!--
-                    <div class="col-md-4 col-sm-6">
-                        <div class="product">
-                            <div class="image">
-                                <a href="shop-detail.html">
-                                    <img src="img/product2.jpg" alt="" class="img-responsive image1">
-                                </a>
-                            </div>
-                            <div class="text">
-                                <h3><a href="shop-detail.html">White Blouse Armani</a></h3>
-                                <p class="price"><del>$280</del> $143.00</p>
-                                <p class="buttons">
-                                    <a href="shop-detail.html" class="btn btn-default">View detail</a>
-                                    <a href="shop-basket.html" class="btn btn-template-main"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                </p>
-                            </div>
-
-                            <div class="ribbon sale">
-                                <div class="theribbon">SALE</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-
-                            <div class="ribbon new">
-                                <div class="theribbon">NEW</div>
-                                <div class="ribbon-background"></div>
-                            </div>
-                        </div>
-                    </div>-->
-
                 </div>
                 <!-- /.products -->
 
-
+                <!--pagination -->
                 <div class="pages">
 
-                    <ul class="pagination">
-                        <li><a href="#">&laquo;</a>
-                        </li>
-                        <li class="active"><a href="#">1</a>
-                        </li>
-                        <li><a href="#">2</a>
-                        </li>
-                        <li><a href="#">3</a>
-                        </li>
-                        <li><a href="#">4</a>
-                        </li>
-                        <li><a href="#">5</a>
-                        </li>
-                        <li><a href="#">&raquo;</a>
-                        </li>
-                    </ul>
+                    <ul uib-pagination total-items="numItems" items-per-page="9" boundary-link-numbers="true" rotate="true" ng-model="currentPage" ng-change="pageChange()"></ul>
+
                 </div>
 
 

@@ -1,4 +1,4 @@
-
+<!-- page header and breadcrumbs -->
 <div id="heading-breadcrumbs">
     <div class="container">
         <div class="row">
@@ -29,7 +29,8 @@
 
             <p class="lead">Change your personal details or your password here.</p>
             <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-
+    
+            <!-- change password section -->
             <div class="box">
 
                 <div class="heading">
@@ -37,6 +38,7 @@
                 </div>
 
                 <form>
+                    <!-- old password -->
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -46,12 +48,14 @@
                         </div>
                     </div>
                     <div class="row">
+                        <!-- new password -->
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="password_1">New password</label>
                                 <input type="password" ng-model="passwords.new" class="form-control" id="password_1">
                             </div>
                         </div>
+                        <!-- retype new password -->
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="password_2">Retype new password</label>
@@ -69,7 +73,7 @@
             </div>
             <!-- /.box -->
 
-
+            <!-- all user information section -->
             <div class="box clearfix">
                 <div class="heading">
                     <h3 class="text-uppercase">Personal details</h3>
@@ -124,7 +128,9 @@
                         <div class="col-sm-6 col-md-3">
                             <div class="form-group">
                                 <label for="state">State</label>
-                                <select ng-model="user.state" class="form-control" id="state"></select>
+                                <select ng-model="user.state" class="form-control" id="state">
+                                    <option ng-repeat="option in states" value="{{option}}">{{option}}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3">
@@ -173,7 +179,7 @@ _________________________________________________________ -->
                 <div class="panel-heading">
                     <h3 class="panel-title">Customer section</h3>
                 </div>
-
+                <!-- right side panel of all user specific actions -->
                 <div class="panel-body">
 
                     <ul class="nav nav-pills nav-stacked">

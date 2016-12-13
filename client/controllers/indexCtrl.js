@@ -1,21 +1,31 @@
 var app = angular.module("ecommerce");
 
-app.controller('indexCtrl', ['$scope', 'Authentication', '$window','requests', '$location', function($scope, Authentication, $window, requests, $location){
+//controller for whole application, used mainly for header
+app.controller('indexCtrl', ['$scope', 'Authentication', '$window','requests', '$location','$sce', '$document', '$rootScope', function($scope, Authentication, $window, requests, $location, $sce, $document, $rootScope){
 
-	$scope.isLoggedIn = Authentication.isLoggedIn();
+	//initialize variables
+	$scope.isLoggedIn = Authentication.isLoggedIn(); //check if user logged in
 	$scope.user = {};
 	$scope.categories = [];
 	$scope.numCartItems = 0;
+	$scope.registrationTooltip = $sce.trustAsHtml('<div>Don\'t have an Account? <a href="/#/register">Register Here</a></div>');
+
+	$scope.popover = {open: false};
+
+	//is user logged in?
 	if($scope.isLoggedIn){
 		$scope.user = Authentication.currentUser();
 	}
+
+	//get all item categories for dropdown menu
 	requests.getCategories().then(function(res){
 		$scope.categories = res.data;
 	},
 	function(err){
-		alert(err);
+		swal("Error", err, "error")
 	});
 
+	//get count of cart items to for the cart button
 	requests.getCartItems().then(function(res){
 		if(res.data.cart == undefined){
 			$scope.numCartItems = 0;
@@ -25,19 +35,19 @@ app.controller('indexCtrl', ['$scope', 'Authentication', '$window','requests', '
 		}
 	},
 	function(err){
-		console.log(err);
-	})
+		swal("Error", err, "error")
+	});
 
+	//logout
 	$scope.logout = function(){
 		Authentication.logout();
 		$window.location = '/#/';
 		$window.location.reload();
 	}
 
-	//Menu Items
+	//Menu Items 
     $scope.isActive = function (viewLocation) { 
         return viewLocation === $location.path();
     };
-    console.log($location.path());
-    console.log($window);
+
 }]);
